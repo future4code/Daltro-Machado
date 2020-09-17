@@ -1,0 +1,161 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+header {
+    color: white;
+    background-color: darkblue;
+    padding: 3px;
+}
+
+.menu{
+    margin: 10px;
+    padding-bottom: 3px;
+    font-size: 1vw;
+    font-weight: bold;
+    color: white;
+    }
+
+#bemvindo {
+    margin: 10;
+    color: white;
+    font-size: 0.8vw;
+    text-align: right;
+    
+}
+
+.corpo{
+    align-content: center;
+    height: 100%;
+}
+
+#logo {
+    display: block;
+    margin: 0 auto;
+    padding: 20px;
+    width: 30vw;
+    align-content: center;
+}
+
+body {
+    align-items: center;
+    
+}
+
+footer {
+    color: blue;
+    padding: 3;
+    position: fixed;
+}
+
+.sociais{
+    width: 2vw;
+    padding: 10px;
+}
+
+/* 
+body {
+    width: 150vw;
+}
+
+.meia-tela {
+    width: 50%;
+    height: 25vh;
+    background-color: yellow;
+}
+
+.texto-importante {
+    color: red;
+}
+
+.titulo-importante {
+    color: blue;
+}
+
+
+p {
+    color: green;
+}
+
+#tela-inteira {
+    width: 100vw;
+}
+
+.table-data {
+    background-color: orange;
+}
+
+#goli {
+    color: red;
+}
+
+#paulinha {
+    color: blue;
+}
+
+#miau {
+    color: green;   
+}
+
+
+h1 {
+    color: green;
+}
+
+#titulo-sumido {
+    display: none;
+}
+
+.paragrafo {
+    display: inline;
+    padding-top: 4px;
+    padding-right: 16px;
+    padding-bottom: 4px;
+    padding-left: 16px;
+}
+
+button {
+    color: white;
+    display: block;
+    margin-top: 10px;
+    background-color: blue;
+}
+
+button:active {
+    background-color: greenyellow;
+    outline: greenyellow;
+    border: greenyellow;
+}
+
+button:hover {
+    color: red;
+}
+
+
+#bloco-vermelho {
+    background-color: red;
+}
+
+
+#bloco-laranja {
+    background-color: orange;
+    color: yellow;
+}
+
+
+h1, h2, h3, h4, h5, h6, p {
+    color: orange;
+}
+
+h2.texto-com-background {
+    background-color: yellow;
+}
+
+h2#texto-com-outra-cor {
+    color: green;
+}
+
+
+ */
