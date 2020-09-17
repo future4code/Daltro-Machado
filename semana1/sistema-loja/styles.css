@@ -10,6 +10,10 @@ header {
     padding: 3px;
 }
 
+.titulo2{
+    padding: 7px;
+}
+
 .menu{
     margin: 10px;
     padding-bottom: 3px;
@@ -53,6 +57,14 @@ footer {
 .sociais{
     width: 2vw;
     padding: 10px;
+}
+
+.produto{
+    padding: 20px;
+}
+
+.form-add{
+    padding: 20px;
 }
 
 /* 
