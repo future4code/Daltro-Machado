@@ -1,0 +1,64 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+a:link 
+{ 
+ text-decoration:none; 
+} 
+
+h2{
+    color: darkred;
+}
+
+header {
+    color: white;
+    background-color: darkred;
+    padding: 6px;
+    margin-bottom: 6px;
+}
+
+
+#portfolio {
+    margin: 10;
+    padding-right: 7px;
+    color: brown;
+    font-size: 0.7vw;
+    text-align: right;
+}
+
+.sociais{
+    width: 1.5vw;
+    padding: 7px;
+}
+
+.menu{
+    margin: 7px;
+    padding: 3px;
+    font-size: 0.9vw;
+    font-weight: bold;
+    color: white;
+    }
+
+body{
+    background-color: burlywood;
+    }
+
+#sobremim{
+    width="55%"
+    cellspacing="15"
+}
+
+
+#foto{
+    width: 12vw;
+    padding: 10px;
+}
+
+.logos{
+    padding: 1px;
+    width: 7vw;
+}
+
