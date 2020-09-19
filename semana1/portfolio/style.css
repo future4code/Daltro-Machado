@@ -6,7 +6,8 @@
 
 a:link 
 { 
- text-decoration:none; 
+ text-decoration:none;
+ color: black; 
 } 
 
 h2{
@@ -45,6 +46,7 @@ header {
 
 body{
     background-color: burlywood;
+    color: black;
     }
 
 #sobremim{
@@ -91,12 +93,31 @@ body{
 }
 
 a:hover{
-    color: goldenrod;
-    font-size: 1vw;
+    color: rgb(11, 138, 106);
+    
 }
 
 
 button:hover {
     color: white;
     background-color: darkred;
+}
+
+.projetos{
+    color: black;
+}
+
+.tabela_projeto{
+    width="90%"
+    margin: 20px;
+}
+
+.screenshot{
+    width: 50vw;
+}
+
+.tecnologias{
+    padding-left: 20px;
+   
+    
 }
