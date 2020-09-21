@@ -54,6 +54,7 @@ div img {
 .container {
     height: 500px;
     text-align: center;
+    padding: 70px;
 }
 
 .icone {
@@ -78,10 +79,10 @@ div img {
 
 #container-para-comprar {
     background-color: #e7eb90;
-    padding: 80px;
+    
 }
 
-#container-para-comprar > p {
+#container-para-comprar {
     color: #c44f00;
     padding: 100px 0;
     font-size: 60px;
