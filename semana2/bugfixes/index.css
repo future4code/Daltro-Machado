@@ -7,6 +7,7 @@
 * {
     margin: 0;
     padding: 0;
+    border: none;
 }
 
 h2 {
@@ -19,6 +20,7 @@ h2 {
 input {
     height: 20px;
     width: 500px;
+    border-bottom: 1px black solid;
 }
 
 button:focus {
@@ -142,5 +144,10 @@ td button {
     background-color: #635a3d
 }
 
+.botao-comprar {
+    border: 0.5px black solid;
+}
+
 .botao-comprar:hover {
     background-color: #c44f00;
+}
