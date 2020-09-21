@@ -66,6 +66,10 @@ div img {
     width: auto;
 }
 
+.icone:hover {
+    background-color: dimgrey;
+}
+
 
 /** 
   *
@@ -140,6 +144,7 @@ td button {
     border-radius: 5px;
     font-size: 10px;
     color: black;
+   
     
 }
 
