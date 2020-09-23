@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+a:link 
+{ 
+ text-decoration:none;
+ color: black; 
+ } 
+
+
+
+h2{
+    color: darkred;
+    padding: 15px;
+}
+
+header {
+    color: white;
+    background-color: darkred;
+    padding: 6px;
+    margin-bottom: 6px;
+}
+
+
+#portfolio {
+    margin: 10;
+    padding-right: 7px;
+    color: brown;
+    font-size: 0.7vw;
+    text-align: right;
+}
+
+.sociais{
+    width: 1.5vw;
+    padding: 7px;
+}
+
+.menu{
+    margin: 7px;
+    padding: 3px;
+    font-size: 0.9vw;
+    font-weight: bold;
+    color: white;
+    }
+
+body{
+    background-color: burlywood;
+    color: black;
+    }
+
+#sobremim{
+    width="1.2vw"
+    cellspacing="15"
+}
+
+
+#foto{
+    width: 12vw;
+    padding: 10px;
+}
+
+.logos{
+    padding: 1px;
+    width: 7vw;
+}
+
+.contato{
+    padding-left: 20px;
+    
+}
+
+.texto{
+    width: 500px;
+    
+}
+
+#mensagem{
+    width: 500px;
+    height: 240px;
+   
+    
+}
+
+.form-add{
+    padding: 20px;
+    
+}
+
+#botao{
+    width: 80px;
+    
+}
+
+a:hover{
+    color: rgb(11, 138, 106);
+    
+}
+
+
+button:hover {
+    color: white;
+    background-color: darkred;
+}
+
+.projetos{
+    color: black;
+}
+
+.tabela_projeto{
+    width="90%"
+    margin: 20px;
+}
+
+.screenshot{
+    width: 50vw;
+}
+
+.tecnologias{
+    padding-left: 20px;
+   
+}
+
+.linkprojetos:visited{
+    color: black;
+}
+
+.linkprojetos:hover{
+    color: rgb(11, 138, 106) ;
+}
