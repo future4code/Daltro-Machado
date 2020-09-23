@@ -8,15 +8,31 @@ body {
 }
 
 #main-container{
+    width: 100vw;
+    height: 100vh;
     display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+
+#top-container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
 }
 
 .green-background {
     background-color: green;
+    flex-basis: 25%;
 }
 
 .yellow-background {
     background-color: yellow;
+    flex-basis: 75%;
 }
 
 .pink-background {
