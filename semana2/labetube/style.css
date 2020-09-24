@@ -1,0 +1,137 @@
+* {
+margin: 0px;
+padding: 0px;
+font-family: 'Roboto', sans-serif;
+
+}
+body{
+    width: 100vw;
+    height: 100vh;
+    overflow-x : hidden
+   
+}
+   
+
+input {
+    padding: 5px;
+    width: 70%;
+}
+
+button {
+    padding: 5px;
+    
+}
+
+header{
+    height: 8vh;
+    display: flex;
+    padding: 20px 10px;
+    color: rgb(30, 207, 207);
+    background-color: teal;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.bodyvideo{
+    height: 70vh;
+    width: 100vh;
+}
+
+#galeria{
+    height: 84vh;
+    width: 100vh;   
+    display: grid;
+    margin: 20px auto;
+    align-items: center;
+    justify-items: center;
+    grid-template-rows: 37% 37%;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 10px;
+    row-gap: 10px;
+     
+   }
+
+.videos{
+    max-height: 50vh;
+ 
+    
+}
+
+.titulo{
+    margin: 20px;
+}
+
+footer{
+    height: 8vh;
+    bottom: 0;
+    display: flex;
+    padding: 30px;
+    color: rgb(30, 207, 207);
+    background-color: teal;
+    flex-direction: row-reverse;
+    font-size: 10px;
+
+}
+
+
+
+
+#lagos{
+   border-style: solid;
+   
+}
+
+#praias{
+    border-style: solid;
+    
+ }
+
+#cachoeiras{
+    border-style: solid;
+    
+}
+
+#cavernas{
+    border-style: solid;
+    
+}
+
+#vistas{
+    border-style: solid;
+    
+}
+
+#geladas{
+    border-style: solid;
+    
+}
+
+#coloridas{
+    border-style: solid;
+    
+}
+
+#cidades{
+    border-style: solid;
+    
+}
+
+@media screen and (min-device-width : 320px) and (max-device-width : 800px) {
+    /* celulares */
+
+    #galeria{
+        height: 100vh;
+        width: 100vh;   
+        display: grid;
+        margin: auto;
+        align-items: center;
+        justify-items: center;
+        grid-template-rows: repeat(8 1fr);
+        grid-template-columns: 1fr;
+        column-gap: 10px;
+        row-gap: 10px;
+         
+       }
+
+       
+}
