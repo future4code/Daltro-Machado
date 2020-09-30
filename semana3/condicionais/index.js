@@ -118,26 +118,31 @@ let categoria = prompt("Escolha a categoria do assento: 1, 2, 3 ou 4 ?")
 const quantidade = Number(prompt("Digite a quantidade de ingressos desejados:"))
 let preco = 0
 let moeda = "R$"
-/* let contador = 0
+let contador = 0
 
-
+console.log(tipoJogo)
+console.log(etapa)
+console.log(categoria)
 //Testa se os dados foram digitados dentro das opções possíveis
 
-if (tipoJogo === ("IN" || "DO")){
+if ((tipoJogo === "IN") || (tipoJogo === "DO")){
     contador += 1
+    console.log(contador)
 }
 
-if (etapa === ("SF" || "DT" || "F")){
+if ((etapa === "SF") || (etapa === "DT") || (etapa === "F")){
     contador += 1
+    console.log(contador)
 }
 
-if (categoria === ("1" || "2" || "3" || "4")){
+if ((categoria === "1") || (categoria === "2") || (categoria === "3") || (categoria === "4")){
     contador += 1
+    console.log(contador)
 }
 
 
 
-if (contador === 3){ */
+if (contador === 3){
 
     //Testa a categoria e a etapa definindo o valor do ingresso
 switch (categoria){
@@ -211,6 +216,6 @@ console.log("---Valores---")
 console.log("Valor do Ingressos:", moeda, preco)
 console.log("Valor total:", moeda, quantidade*preco)
 
-// } else {
-//     console.log("Dados inválidos! Recarregue a páginae tente novamente.")
-// }
+} else {
+    console.log("Dados inválidos! Recarregue a página e tente novamente.")
+}
