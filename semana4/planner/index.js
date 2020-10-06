@@ -1,8 +1,13 @@
 
 function limparTarefas() {
-    const limparClasse = document.getElementsByClassName("tarefas")
-    limparClasse.innerHTML = ""
-}
+    const limparClasse = document.getElementsByClassName("ulTarefas")
+    for (let i = 0; i < limparClasse.length; i++){
+        limparClasse[i].innerHTML = " "
+    } 
+    
+        
+    }
+
 let contador = 1
 function adicionarTarefa() {
     const tarefa = document.getElementById("tarefa")

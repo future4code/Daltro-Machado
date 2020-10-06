@@ -26,3 +26,8 @@ section {
 .tarefas {
     padding: 5px;
 }
+
+.ulTarefas {
+    background-color: darkblue;
+    color: white;
+}
