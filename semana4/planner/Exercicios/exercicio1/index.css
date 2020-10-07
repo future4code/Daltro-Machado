@@ -1,0 +1,8 @@
+#minha-div {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+p {
+    color: blue;
+}
