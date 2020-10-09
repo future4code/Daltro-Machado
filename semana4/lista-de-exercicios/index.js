@@ -58,7 +58,7 @@ do array não for um numero negativo. Caso isto aconteça esse número será des
 Para iterar uma lista, podemos usar qualquer uma das 3 estruturas de loops, While, For e Forof.
 */
 
-const lista = [3, 4, 89, 56, 31, 48, 1, 100]
+/* const lista = [3, 4, 89, 56, 31, 48, 1, 100]
 
 // Primeira forma
 let indice = 0
@@ -75,6 +75,24 @@ for (let index = 0; index < lista.length; index++) {
 // Terceira forma
 for (let i of lista) {
     console.log(i)
-}
+} */
+
+
+// Exercício 2
+
+/*
+a) FALSE
+
+b) FALSE
+
+c) TRUE
+
+d) TRUE
+
+e) TRUE
+*/
+
+
+// Exercício 3
 
 
