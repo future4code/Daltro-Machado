@@ -35,3 +35,23 @@ Então, caso seja PAR, adiciona o elemento no array1 e caso se for IMPAR adicion
 Após isso, uma frase informando o total de números é exibida no console seguida da quantidade de
 numeros existentes nos três arrays.
 */
+
+// Exercicio 4
+
+/*
+O código cria um array de números e duas variáveis, uma com valor infinito (numero1) e outra
+com valor 0 (numero2). Depois, em um loop FOR ele percorre o array de numeros testando cada elemento desse array duas vezes
+para encontrar o maior e o menor número do array. A cada núemro maior e menor que seu antecessor ele armazena
+nas variáveis (numero1) e (numero2).
+Após o loop ele exibe no console o valor das variáveis (numero1) e (numero2).
+Acredito porém que existe uma falha nesta lógica para encontrar o menor número. Para este teste o código
+utiliza a variável (numero2) que recebe valor inicial 0. Ele testa se o elemento do indice 0 é maior que
+o conteúdo da variável e se for, atribui esse elemento a mesma. A lógica funcionará bem SE o primeiro elemento
+do array não for um numero negativo. Caso isto aconteça esse número será descartado como o menor numero do array.
+*/
+
+
+// Exercícios de Lógica de Programação
+
+// Exercício 1
+
