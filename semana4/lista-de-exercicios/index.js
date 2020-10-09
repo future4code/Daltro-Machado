@@ -215,3 +215,13 @@ com uma sintaxe que permite específica podemos definir para cada elemento, uma 
 
 // Exercício 2
 
+/* function criarRetangulo(lado1, lado2) {
+    const usuario = {
+        largura: lado1,
+        altura: lado2,
+        perimetro: 2 * (lado1 + lado2),
+        area: lado1 * lado2
+    }
+    return usuario
+}
+console.log(criarRetangulo(4,7)) */
