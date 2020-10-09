@@ -112,7 +112,7 @@ Também não foi criado um incremento para a variavel i, o que pode resultar em 
 Com as alterações abaixo o código irá realizar o que foi pedido.
 */
 
-function exercicio3(n) {
+/* function exercicio3(n) {
     let i = 0
     console.log("Os", n, "primeiros números pares são:")
     while(i < n) {
@@ -121,4 +121,30 @@ function exercicio3(n) {
     }
 }
 
-exercicio3(Number(prompt("Digite a quantidade de números pares que deseja ver:")))
+exercicio3(Number(prompt("Digite a quantidade de números pares que deseja ver:"))) */
+
+
+// Exercicio 4
+
+function exercicio4(l1, l2, l3) {
+    if ((l1 === l2) && (l1 === l3)) {
+        console.log("O seu triangulo é um Triângulo Equilátero!")
+    } else {
+        if ((l2 === l3) || (l1 === l3) || (l1 === l2)){
+            console.log("O seu triangulo é um Triângulo Isósceles!")
+        } else {
+            console.log("O seu triangulo é um Triângulo Escaleno!")
+        }
+    }
+    
+}
+
+const lado1 = Number(prompt("Digite a medida do primeiro lado do triângulo"))
+const lado2 = Number(prompt("Digite a medida do segundo lado do triângulo"))
+const lado3 = Number(prompt("Digite a medida do terceiro lado do triângulo"))
+exercicio4(lado1, lado2, lado3)
+
+
+// Exercicio 5
+
+
