@@ -29,5 +29,9 @@ pré-definidos no código, a mensagem de alerta não será mostrada.
 // Exercício 3
 
 /*
-
+O código primeiro cria 3 arrays, um com números e outros dois vazios.
+Depois uma FOR percorre o array de numeros e testa cada um dos elementos para saber se é PAR ou IMPAR.
+Então, caso seja PAR, adiciona o elemento no array1 e caso se for IMPAR adiciona no array2.
+Após isso, uma frase informando o total de números é exibida no console seguida da quantidade de
+numeros existentes nos três arrays.
 */
