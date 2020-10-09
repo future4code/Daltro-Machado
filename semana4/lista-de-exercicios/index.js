@@ -114,7 +114,7 @@ Com as alterações abaixo o código irá realizar o que foi pedido.
 
 function exercicio3(n) {
     let i = 0
-    console.log("Os", n, "primeiro números pares são:")
+    console.log("Os", n, "primeiros números pares são:")
     while(i < n) {
       console.log(i*2)
       i = i + 1
