@@ -126,7 +126,7 @@ exercicio3(Number(prompt("Digite a quantidade de números pares que deseja ver:"
 
 // Exercicio 4
 
-function exercicio4(l1, l2, l3) {
+/* function exercicio4(l1, l2, l3) {
     if ((l1 === l2) && (l1 === l3)) {
         console.log("O seu triangulo é um Triângulo Equilátero!")
     } else {
@@ -142,9 +142,38 @@ function exercicio4(l1, l2, l3) {
 const lado1 = Number(prompt("Digite a medida do primeiro lado do triângulo"))
 const lado2 = Number(prompt("Digite a medida do segundo lado do triângulo"))
 const lado3 = Number(prompt("Digite a medida do terceiro lado do triângulo"))
-exercicio4(lado1, lado2, lado3)
+exercicio4(lado1, lado2, lado3) */
 
 
 // Exercicio 5
 
+function exercicio5(n1, n2) {
+  let maior = 0
+  let menor = 0
+  if (n1>=n2) {
+      maior = n1
+      menor = n2
+  } else {
+     maior = n2
+     menor = n1
+  }
+  console.log("O maior número é", maior)
+
+  if ((n1%n2) === 0) {
+     console.log("O número", n1, 'é divisível por', n2) 
+  } else {
+    console.log("O número", n1, "não é divisível por", n2) 
+  }
+
+  if ((n2%n1) === 0) {
+    console.log("O número", n2, 'é divisível por', n1) 
+ } else {
+   console.log("O número", n2, "não é divisível por", n1) 
+ }
+ console.log("A diferença entre eles é", maior-menor) 
+}
+
+const numero1 = Number(prompt("Digite o primeiro número:"))
+const numero2 = Number(prompt("Digite o segundo número:"))
+exercicio5(numero1, numero2)
 
