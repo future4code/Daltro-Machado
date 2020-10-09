@@ -147,7 +147,7 @@ exercicio4(lado1, lado2, lado3) */
 
 // Exercicio 5
 
-function exercicio5(n1, n2) {
+/* function exercicio5(n1, n2) {
   let maior = 0
   let menor = 0
   if (n1>=n2) {
@@ -175,5 +175,43 @@ function exercicio5(n1, n2) {
 
 const numero1 = Number(prompt("Digite o primeiro número:"))
 const numero2 = Number(prompt("Digite o segundo número:"))
-exercicio5(numero1, numero2)
+exercicio5(numero1, numero2) */
+
+
+// Exercícios de Funções
+
+// Exercício 1  INCOMPLETO
+
+/* const numeros = [3, 4, 89, 56, 31, 48, 1, 100]
+
+function funcao1(arrayNumeros) {
+//  let maiorElemento = arrayNumeros[0]
+ const novoArray = arrayNumeros.map((elemento, indice, array) => {
+    Math.min.apply(Math, array)
+    Math.max.apply(Math, array)
+    
+ });
+    
+}
+funcao1(numeros) */
+
+
+// Exercicio 2
+
+/* let hello = () => {
+    console.log("Hello Future4")
+    }
+
+hello() */
+
+// Exercícios de Objetos
+
+// Exercicio 1
+
+/*
+Objetos são arrays que podemos criar sempre que necessitarmos de uma estruturas mais complexas de dados,
+com uma sintaxe que permite específica podemos definir para cada elemento, uma chave e um valor.
+*/
+
+// Exercício 2
 
