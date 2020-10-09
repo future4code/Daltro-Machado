@@ -58,7 +58,9 @@ do array não for um numero negativo. Caso isto aconteça esse número será des
 Para iterar uma lista, podemos usar qualquer uma das 3 estruturas de loops, While, For e Forof.
 */
 
-/* const lista = [3, 4, 89, 56, 31, 48, 1, 100]
+/* function exercicio1() {
+
+const lista = [3, 4, 89, 56, 31, 48, 1, 100]
 
 // Primeira forma
 let indice = 0
@@ -75,7 +77,9 @@ for (let index = 0; index < lista.length; index++) {
 // Terceira forma
 for (let i of lista) {
     console.log(i)
+}
 } */
+
 
 
 // Exercício 2
@@ -95,4 +99,26 @@ e) TRUE
 
 // Exercício 3
 
+/*
+const quantidadeDeNumerosPares
+let i = 0
+while(i <= quantidadeDeNumerosPares) {
+  console.log(i*2)
+}
 
+Este código não funciona pois não foi atribuído um valor a variável quantidadeDeNumerosPares.
+O while tem que se repetir enquanto i for apenas < que quantidadeDeNumerosPares e não enquanto for <=.
+Também não foi criado um incremento para a variavel i, o que pode resultar em um loop infinito.
+Com as alterações abaixo o código irá realizar o que foi pedido.
+*/
+
+function exercicio3(n) {
+    let i = 0
+    console.log("Os", n, "primeiro números pares são:")
+    while(i < n) {
+      console.log(i*2)
+      i = i + 1
+    }
+}
+
+exercicio3(Number(prompt("Digite a quantidade de números pares que deseja ver:")))
