@@ -183,7 +183,7 @@ exercicio5(numero1, numero2) */
 
 
 
-// Exercício 1  INCOMPLETO - NAO ESTÁ FUNCIONANDO
+// Exercício 1 
 
 /* const numeros = [3, 4, 89, 56, 31, 48, 1, 100]
 
@@ -215,6 +215,8 @@ for(let i = 0; i < arrayNumeros.length; i++){
         segundoMenor = arrayNumeros[i]
     }
 }
+console.log("O maior número é:", maiorElemento)    
+console.log("O menor número é:", menorElemento) 
 console.log("O Segundo maior número é:", segundoMaior)    
 console.log("O Segundo menor número é:", segundoMenor) 
 }
@@ -412,7 +414,7 @@ const emails = consultas.map((elemento, indice, array) =>{
             contato conosco para remarcá-la`
         } else {
             return elemento = `Olá, Sr. ${elemento.nome}. Estamos enviando esta mensagem para
-            lembrá-la da sua consulta no dia ${elemento.dataDaConsulta}. Por favor, acuse
+            lembrá-lo da sua consulta no dia ${elemento.dataDaConsulta}. Por favor, acuse
             o recebimento deste e-mail.`
         }
     } else {
