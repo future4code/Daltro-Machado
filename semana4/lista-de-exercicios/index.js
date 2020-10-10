@@ -225,3 +225,105 @@ com uma sintaxe que permite específica podemos definir para cada elemento, uma 
     return usuario
 }
 console.log(criarRetangulo(4,7)) */
+
+
+// Exercício 3
+
+/*
+const filmeFavorito = {
+    titulo: "Duelo de Titãs",
+    ano: "2000",
+    diretor: "Boaz Yakin",
+    protagonista: "Denzel Washington",
+    coadjuvante1: "Will Patton",
+    coadjuvante2: "Wood Harris"
+}
+console.log("Venha assistir ao filme", filmeFavorito.titulo, "de", filmeFavorito.ano, "dirigido por", filmeFavorito.diretor, "e estrelado por", filmeFavorito.protagonista, filmeFavorito.coadjuvante1, "e", filmeFavorito.coadjuvante2, ".")
+*/
+
+// Exercicio 4
+
+/* const pessoa = {
+    nome: 'Maria dos Anjos',
+    idade: 23,
+    email: 'mariadosanjos@gmail.com',
+    endereco: 'Av. Brasil 5000'
+}
+
+function anonimizarPessoa() {
+    const pessoaAnonima = {
+        ...pessoa,
+        nome: 'ANÔNIMO'
+    }
+    return pessoaAnonima
+}
+
+console.log(anonimizarPessoa()) */
+
+
+// Exercícios de Funções de Array
+
+// Exercicio 1
+
+/* const nome = [
+	{ nome: "Pedro", idade: 20 },
+	{ nome: "João", idade: 10 },
+	{ nome: "Paula", idade: 12 },
+	{ nome: "Artur", idade: 89 } 
+]
+
+// letra a
+
+const adultos = nome.filter((elemento, indice, array) =>{
+    if (elemento.idade >= 20) {
+        return true
+    }
+    return false
+})
+
+
+
+// letra b
+
+const criancas = nome.filter((elemento, indice, array) =>{
+    if (elemento.idade < 20) {
+        return true
+    }
+    return false
+}) */
+
+
+// Exercicio 2
+
+// letra a
+
+/* const numeros = [1, 2, 3, 4, 5, 6]
+
+const arrayDobro = numeros.map((elemento, indice, array) =>{
+    return elemento * 2
+
+})
+*/
+
+// letra b
+
+/* const numeros = [1, 2, 3, 4, 5, 6]
+
+const arrayTriploString = numeros.map((elemento, indice, array) =>{
+    return String((elemento * 3))
+
+})
+ */
+
+// letra c
+
+/* const numeros = [1, 2, 3, 4, 5, 6]
+
+const arrayParImpar = numeros.map((elemento, indice, array) =>{
+    if ((elemento%2) === 0) {
+        return elemento = `${elemento} é par`
+    } else {
+        return elemento = `${elemento} é impar`
+    }
+}) */
+
