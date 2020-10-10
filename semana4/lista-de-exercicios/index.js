@@ -183,38 +183,44 @@ exercicio5(numero1, numero2) */
 
 
 
-/* // Exercício 1  INCOMPLETO - NAO ESTÁ FUNCIONANDO
+// Exercício 1  INCOMPLETO - NAO ESTÁ FUNCIONANDO
 
-const numeros = [3, 4, 89, 56, 31, 48, 1, 100]
+/* const numeros = [3, 4, 89, 56, 31, 48, 1, 100]
 
 function funcao1(arrayNumeros) {
 let maiorElemento = arrayNumeros[0]
-let segundoMaior = 0
 for(let i = 0; i < arrayNumeros.length; i++){
-    if (maiorElemento < array[i]){
-        maiorElemento = array[i]
+    if (maiorElemento < arrayNumeros[i]){
+        maiorElemento = arrayNumeros[i]
     }
 }
 arrayNumeros.splice(arrayNumeros.indexOf(maiorElemento), 1)
-for(let i = 0; i < array.Numeros.length; i++){
-    if (maiorElemento < array[i]){
-        maiorElemento = array[i]
+let segundoMaior = arrayNumeros[0]
+for(let i = 0; i < arrayNumeros.length; i++){
+    if (segundoMaior < arrayNumeros[i]){
+        segundoMaior = arrayNumeros[i]
     }
 }
-a
- const novoArray = arrayNumeros.map((elemento, indice, array) => {
-    Math.min.apply(Math, array)
-    Math.max.apply(Math, array)
-    
- });
-    
+
+let menorElemento = arrayNumeros[0]
+for(let i = 0; i < arrayNumeros.length; i++){
+    if (menorElemento > arrayNumeros[i]){
+        menorElemento = arrayNumeros[i]
+    }
+}
+arrayNumeros.splice(arrayNumeros.indexOf(menorElemento), 1)
+let segundoMenor = arrayNumeros[0]
+for(let i = 0; i < arrayNumeros.length; i++){
+    if (segundoMenor > arrayNumeros[i]){
+        segundoMenor = arrayNumeros[i]
+    }
+}
+console.log("O Segundo maior número é:", segundoMaior)    
+console.log("O Segundo menor número é:", segundoMenor) 
 }
 funcao1(numeros) */
 
-
-
-
-
+  
 
 // Exercicio 2
 
