@@ -180,12 +180,28 @@ exercicio5(numero1, numero2) */
 
 // Exercícios de Funções
 
-// Exercício 1  INCOMPLETO
 
-/* const numeros = [3, 4, 89, 56, 31, 48, 1, 100]
+
+
+/* // Exercício 1  INCOMPLETO - NAO ESTÁ FUNCIONANDO
+
+const numeros = [3, 4, 89, 56, 31, 48, 1, 100]
 
 function funcao1(arrayNumeros) {
-//  let maiorElemento = arrayNumeros[0]
+let maiorElemento = arrayNumeros[0]
+let segundoMaior = 0
+for(let i = 0; i < arrayNumeros.length; i++){
+    if (maiorElemento < array[i]){
+        maiorElemento = array[i]
+    }
+}
+arrayNumeros.splice(arrayNumeros.indexOf(maiorElemento), 1)
+for(let i = 0; i < array.Numeros.length; i++){
+    if (maiorElemento < array[i]){
+        maiorElemento = array[i]
+    }
+}
+a
  const novoArray = arrayNumeros.map((elemento, indice, array) => {
     Math.min.apply(Math, array)
     Math.max.apply(Math, array)
@@ -194,6 +210,10 @@ function funcao1(arrayNumeros) {
     
 }
 funcao1(numeros) */
+
+
+
+
 
 
 // Exercicio 2
@@ -403,3 +423,17 @@ const emails = consultas.map((elemento, indice, array) =>{
 })
  */
 // Exercicio 5
+
+/* const contas = [
+	{ cliente: "João", saldoTotal: 1000, compras: [100, 200, 300] },
+	{ cliente: "Paula", saldoTotal: 7500, compras: [200, 1040] },
+	{ cliente: "Pedro", saldoTotal: 10000, compras: [5140, 6100, 100, 2000] },
+	{ cliente: "Luciano", saldoTotal: 100, compras: [100, 200, 1700] },
+	{ cliente: "Artur", saldoTotal: 1800, compras: [200, 300] },
+	{ cliente: "Soter", saldoTotal: 1200, compras: [] }
+]
+
+contas.forEach((elemento, indice, array) =>{
+    elemento.saldoTotal = elemento.saldoTotal - elemento.compras.reduce((total, numero) => total + numero, 0)
+})
+ */
