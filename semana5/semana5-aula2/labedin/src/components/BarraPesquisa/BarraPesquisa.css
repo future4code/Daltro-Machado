@@ -1,0 +1,10 @@
+.barra > input {
+    height: 8vh;
+    width: 30vw;
+    border-radius: 5%;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 50px;
+    padding: 15px 10px;
+    margin: 10px auto;
+}
