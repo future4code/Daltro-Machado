@@ -47,6 +47,9 @@ class App extends React.Component {
   };
 
   componentDidMount() {
+    if (localStorage.getItem("tarefas")) {
+      this.setState({tarefas: JSON.parse(localStorage.getItem("tarefas"))})
+    }
     const guardaString = localStorage.getItem("tarefa")
     const transformaObjeto = JSON.parse(guardaString)
     this.setState({tarefas: transformaObjeto})
