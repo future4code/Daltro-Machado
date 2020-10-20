@@ -31,28 +31,13 @@ class App extends React.Component {
     }
 
   componentDidUpdate() {
-
-   /*  const guardaTarefas = {
-        idTarefa: this.state.id,
-        textoTarefa: this.state.texto,
-        status: this.state.completa
-    } */
     localStorage.setItem("tarefa", JSON.stringify(this.state.tarefas))
-
-/*     this.setState({
-      id: "",
-      texto: "",
-      completa: ""
-  }) */
   };
 
   componentDidMount() {
-    if (localStorage.getItem("tarefas")) {
-      this.setState({tarefas: JSON.parse(localStorage.getItem("tarefas"))})
+    if (localStorage.getItem("tarefa")) {
+      this.setState({tarefas: JSON.parse(localStorage.getItem("tarefa"))})
     }
-    const guardaString = localStorage.getItem("tarefa")
-    const transformaObjeto = JSON.parse(guardaString)
-    this.setState({tarefas: transformaObjeto})
   };
 
   onChangeInput = (event) => {
