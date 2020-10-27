@@ -26,7 +26,7 @@ export default class App extends React.Component {
       if (this.state.telacadastro) {
         return <CadastraUsuario/>;
       } else {
-        <ExibeListaUsuario/>
+        return <ExibeListaUsuario/>
       }}
       return (
       <div className="App">
