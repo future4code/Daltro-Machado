@@ -2,6 +2,19 @@ import React from 'react';
 import styled from 'styled-components';
 import axios from "axios";
 
+const BotaoPadrao = styled.button`
+  padding: 1px;
+  margin: 2px;
+  width: 100px;
+  height: 25px;
+  border-radius: 20px;
+  background-color: lightblue;
+  :hover{
+    background-color: darkblue;
+    color: white;
+  };
+`;
+
 class CadastraUsuario extends React.Component {
     state = {
       usuarios: [],
@@ -56,7 +69,7 @@ class CadastraUsuario extends React.Component {
               value={this.state.emailValue}
               onChange={this.onChangeEmailValue}
             />
-            <button onClick={this.CriarUsuario}>Criar Usuário</button>
+            <BotaoPadrao onClick={this.CriarUsuario}>Criar Usuário</BotaoPadrao>
           </div>
         </div>
       );

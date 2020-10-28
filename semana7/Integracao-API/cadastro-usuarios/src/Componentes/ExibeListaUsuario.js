@@ -2,9 +2,22 @@ import React from 'react';
 import styled from 'styled-components';
 import axios from "axios";
 
-const DeleteButton = styled.span`
+const DeleteButton = styled.button`
   color: red;
+  background-color: white;
   margin-left: 10px;
+  font-size: 12px;
+  border-radius: 20%;
+  :hover {
+    background-color: red;
+    color: white;
+    font-size: 14px;
+  };
+`;
+
+const InfoUsuario = styled.p`
+  color: darkblue;
+
 `;
 
 const baseUrl =
@@ -31,7 +44,6 @@ ExibirUsuarios = () => {
     .get(`${baseUrl}`, axiosConfig)
       .then((resposta) => {
         this.setState({ usuarios: resposta.data });
-        console.log(resposta) 
       })
       .catch((err) => {
         alert("Desculpe, não foi possível exibir a lista de usuários!");
@@ -52,11 +64,20 @@ ExibirUsuarios = () => {
     }
   };
 
+  infoUser = (userId) => {
+    const renderedusuarios = this.state.usuarios.filter((usuario) => {
+      return <InfoUsuario key={userId}>Nome: {usuario.name} Email: {usuario.email}<DeleteButton onClick={() => this.deleteUser(usuario.id)}>
+      X
+    </DeleteButton></InfoUsuario>
+    })
+    console.log(renderedusuarios)
+  }
+
   render() {
     const renderedusuarios = this.state.usuarios.map((usuario) => {
-      return <p key={usuario.id}>{usuario.name}<DeleteButton onClick={() => this.deleteUser(usuario.id)}>
+      return <InfoUsuario key={usuario.id} onClick={() => this.infoUser(usuario.id)}>{usuario.name}<DeleteButton onClick={() => this.deleteUser(usuario.id)}>
       X
-    </DeleteButton></p>;
+    </DeleteButton></InfoUsuario>;
     });
 
     return (
