@@ -2,6 +2,21 @@ import React from 'react';
 import styled from 'styled-components';
 import axios from "axios";
 
+const DeleteButton = styled.span`
+  color: red;
+  margin-left: 10px;
+`;
+
+const baseUrl =
+  "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users";
+
+const axiosConfig = {
+  headers: {
+    Authorization: "daltro-machado-dumont"
+  }
+};
+
+
 class ExibeListaUsuario extends React.Component {
     state = {
         usuarios: [],
@@ -9,19 +24,11 @@ class ExibeListaUsuario extends React.Component {
 
 componentDidMount = () => {
     this.ExibirUsuarios();
-    console.log("oi")
 };
 
 ExibirUsuarios = () => {
     axios
-    .get(
-        "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users",
-        {
-          headers: {
-            Authorization: "daltro-machado-dumont"
-          }
-        }
-      )
+    .get(`${baseUrl}`, axiosConfig)
       .then((resposta) => {
         this.setState({ usuarios: resposta.data });
         console.log(resposta) 
@@ -31,9 +38,25 @@ ExibirUsuarios = () => {
       });
   };
 
+  deleteUser = (userId) => {
+    if (window.confirm("Tem certeza que deseja deletar este usuário?")) {
+      axios
+      .delete(`${baseUrl}/${userId}`, axiosConfig)
+      .then((response) => {
+        alert("Usuário deletado com sucesso!");
+        this.ExibirUsuarios();
+      })
+      .catch((error) => {
+        alert("Erro ao deletar Usuário. Verifique com o adminsitrador do Banco de Dados!");
+      });
+    }
+  };
+
   render() {
     const renderedusuarios = this.state.usuarios.map((usuario) => {
-      return <p key={usuario.id}>{usuario.name}</p>;
+      return <p key={usuario.id}>{usuario.name}<DeleteButton onClick={() => this.deleteUser(usuario.id)}>
+      X
+    </DeleteButton></p>;
     });
 
     return (
