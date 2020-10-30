@@ -12,6 +12,13 @@ const MainContainer = styled.div`
   grid-template-rows: 15% 15% 70%;
 `;
 
+const ListaMusicas = styled.p`
+  grid-column-start: 2; 
+  grid-column-end: 3; 
+  grid-row-start: 3; 
+  grid-row-end: 4;
+`;
+
 const CriarPlaylistContainer = styled.div`
   grid-column-start: 1; 
   grid-column-end: 2; 
@@ -40,6 +47,7 @@ const axiosConfig = {
 };
 
 let nomePlaylist = "";
+let addMusic = "";
 
 class App extends React.Component {
   state = {
@@ -108,26 +116,28 @@ class App extends React.Component {
     axios
       .get(`https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${playlistId}/tracks`, axiosConfig)
       .then((response) => {
-        this.setState({ selectedPlaylist: response.data.result });
+        this.setState({ selectedPlaylist: response.data.result.tracks });
         console.log(response.data.result)
       })
       .catch((error) => {
         alert("Erro ao selecionar Playlist!");
         console.log(error.message);
-      });    
-  };
+      });
+      
+      };
 
   render() {
+    console.log(this.state.selectedPlaylist)
     const renderedPlaylists = this.state.playlists.map((playlist) => {
       return <p key={playlist.id} onClick={() => this.detalhePlaylist(playlist.id, playlist.name)}>{playlist.name}<DeleteButton onClick={() => this.deletePlaylist(playlist.id)}>
       x</DeleteButton></p>
     });
 
     
-/*     const detailPlaylists = (this.state.selectedPlaylist !== "") ? this.state.selectedPlaylist.map((playlist) => {
-      return <p key={playlist.id}>{playlist.quantity}{playlist.tracks}</p>
-    }) : <div></div> */
-
+    const detailPlaylists = this.state.selectedPlaylist.map((playlist) => {
+    return <ListaMusicas key={playlist.id}>{playlist.name}<br />{playlist.artist}<br /><audio src= {playlist.url} controls></audio></ListaMusicas>
+    });
+    console.log(detailPlaylists)
     return (
       <MainContainer>
         <CriarPlaylistContainer>
@@ -142,7 +152,8 @@ class App extends React.Component {
           {renderedPlaylists}  
         </ListContainer>
         <DetalhesPlaylist>
-          {nomePlaylist}
+          <h3>{nomePlaylist}</h3>
+          {detailPlaylists}
         </DetalhesPlaylist>
       </MainContainer>
     );
