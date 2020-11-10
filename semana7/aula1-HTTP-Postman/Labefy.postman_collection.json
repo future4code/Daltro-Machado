@@ -1,0 +1,379 @@
+{
+	"info": {
+		"_postman_id": "03d4ccfa-37b3-4b78-9ea8-1bff04e8cf91",
+		"name": "Labefy",
+		"description": "API com as playlists",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Cria Playlist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "daltro-machado-dumont",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"POP\"    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lê todas as playlists",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "daltro-machado-dumont",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Adiciona Músicas à Playlist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "daltro-machado-dumont",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Daniel Na Cova dos Leões\", \r\n    \"artist\": \"Legião Urbana\",\r\n    \"url\": \"https://deezer.page.link/UsaQZiJHDHXjzjAk6\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/68c71d84-dba9-4f75-9fc7-dbe2de919d15/tracks",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						"68c71d84-dba9-4f75-9fc7-dbe2de919d15",
+						"tracks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Adiciona Músicas à Playlist Samba",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "daltro-machado-dumont",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Alvorecer\", \r\n    \"artist\": \"Clara Nunes\",\r\n    \"url\": \"https://deezer.page.link/eSZJas3m9XVuNFem7\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/2014ea2a-cc93-47c9-933f-1059a8a39a33/tracks\n",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						"2014ea2a-cc93-47c9-933f-1059a8a39a33",
+						"tracks\n"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Adiciona Músicas à Playlist POP",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "daltro-machado-dumont",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Señorita\", \r\n    \"artist\": \"Shaw Mendes\",\r\n    \"url\": \"https://deezer.page.link/rxFa8RFzcDYQnLDV8\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/d837a4ae-49ac-42b4-a21c-da02c178f34e/tracks\n",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						"d837a4ae-49ac-42b4-a21c-da02c178f34e",
+						"tracks\n"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lê as músicas de uma playlist",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "daltro-machado-dumont",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/68c71d84-dba9-4f75-9fc7-dbe2de919d15/tracks\n",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						"68c71d84-dba9-4f75-9fc7-dbe2de919d15",
+						"tracks\n"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lê as músicas da playlist Samba",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "daltro-machado-dumont",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/2014ea2a-cc93-47c9-933f-1059a8a39a33/tracks",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						"2014ea2a-cc93-47c9-933f-1059a8a39a33",
+						"tracks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lê as músicas da playlist POP",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "daltro-machado-dumont",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/d837a4ae-49ac-42b4-a21c-da02c178f34e/tracks",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						"d837a4ae-49ac-42b4-a21c-da02c178f34e",
+						"tracks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pesquisa uma Playlist",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "daltro-machado-dumont",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/search?name=\"Rock Nacional\"",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						"search"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "\"Rock Nacional\""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deleta músicas da playlist",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "daltro-machado-dumont",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/68c71d84-dba9-4f75-9fc7-dbe2de919d15/tracks/1060fa98-951e-4270-a4e0-551918daa1b0\n",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						"68c71d84-dba9-4f75-9fc7-dbe2de919d15",
+						"tracks",
+						"1060fa98-951e-4270-a4e0-551918daa1b0\n"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Apaga uma playlist",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "daltro-machado-dumont",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/7753a28b-bcd2-4c0c-ac47-f2ad01b9ed68",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						"7753a28b-bcd2-4c0c-ac47-f2ad01b9ed68"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
