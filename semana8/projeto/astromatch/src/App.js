@@ -5,6 +5,7 @@ import Matches from "./components/matches";
 import Menu from "./components/menu";
 
 
+
 const ContainerPrincipal = styled.div`
   width: 100vw;
   height: 100vh;
@@ -38,11 +39,10 @@ const Logo = styled.div`
 `
 
 export default function App() {
-  const [telaCentral, setTelaCentral] = useState(<Menu/>);
+  const [telaCentral, setTelaCentral] = useState(true);
 
-  const telaMatches = () => {
-    setTelaCentral(<Matches/>)
-    alert("Entrou na função")
+  const mudaPagina = () => {
+    setTelaCentral(!telaCentral)
   } 
 
   const apagaHistorico = () => {
@@ -50,12 +50,14 @@ export default function App() {
       .put("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/daltro/clear")
       .then(response => {
         alert("Histórico apagado!")
+        if (!telaCentral) {
+          setTelaCentral(!telaCentral)
+        }
       })
       .catch(err => {
         alert("Erro ao apagar histórico")
       })
   }
-
   return (
     <ContainerPrincipal>
       <Logo>
@@ -66,10 +68,10 @@ export default function App() {
       </Logo>
       <ContainerCentral>
         <Header>
-          <button onClick={telaMatches}>Matches</button>
+          <button onClick={mudaPagina}>Matches</button>
           <button onClick={apagaHistorico}>Apagar Histórico</button>
         </Header>
-          {telaCentral}
+          {telaCentral ? <Menu/> : <Matches/>}
       </ContainerCentral>
     </ContainerPrincipal>
   );

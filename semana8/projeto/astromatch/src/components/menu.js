@@ -41,7 +41,6 @@ const FotoPerfil = styled.img`
   height: 80vh;
   width: 35vw;
   border-radius: 5%;
-
 `
 
 export default function Menu() {

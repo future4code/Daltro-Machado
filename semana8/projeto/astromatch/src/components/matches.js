@@ -10,7 +10,11 @@ const ContainerMatches = styled.div`
   text-align: center; */
   padding: 0px;
   border: none;
-  background-color: red;
+`
+const FotoMatch = styled.img`
+  height: 10vh;
+  width: 10vh;
+  border-radius: 50%;
 `
 
 export default function Matches() {
@@ -25,17 +29,25 @@ export default function Matches() {
         .get("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/daltro/matches")
         .then(response => {
           setMatches(response.data.matches);
-          console.log(matches)
-          alert("Executou PegaMAtches")
         })
         .catch(err => {
           alert("Erro ao pegar os matches");
         })
-
+    }
+    
+    const listaMatches = matches.map((profile =>{
         return (
+            <div>
+            <FotoMatch src= {profile.photo}></FotoMatch>
+            <p>{profile.name}</p>
+            </div>
+        )
+    }))
+    
+    return (
             <ContainerMatches>
-                <p>Teste</p>
+                {listaMatches}
             </ContainerMatches>
           );
-    }
+
 } 
