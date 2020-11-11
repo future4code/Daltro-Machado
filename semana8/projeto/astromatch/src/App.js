@@ -38,7 +38,24 @@ const Logo = styled.div`
 `
 
 export default function App() {
-  
+  const [telaCentral, setTelaCentral] = useState(<Menu/>);
+
+  const telaMatches = () => {
+    setTelaCentral(<Matches/>)
+    alert("Entrou na função")
+  } 
+
+  const apagaHistorico = () => {
+    axios
+      .put("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/daltro/clear")
+      .then(response => {
+        alert("Histórico apagado!")
+      })
+      .catch(err => {
+        alert("Erro ao apagar histórico")
+      })
+  }
+
   return (
     <ContainerPrincipal>
       <Logo>
@@ -49,10 +66,10 @@ export default function App() {
       </Logo>
       <ContainerCentral>
         <Header>
-          <button>Matches</button>
-          <button>Apagar</button>
+          <button onClick={telaMatches}>Matches</button>
+          <button onClick={apagaHistorico}>Apagar Histórico</button>
         </Header>
-          <Menu/>
+          {telaCentral}
       </ContainerCentral>
     </ContainerPrincipal>
   );

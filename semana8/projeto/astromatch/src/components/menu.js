@@ -48,16 +48,50 @@ export default function Menu() {
     const [perfil, setPerfil] = useState({});
 
     useEffect(() => {
-        axios
-          .get("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:daltro/person")
-          .then(response => {
-            // função que está pegando um perfil não visualizado ainda para exibir
-            setPerfil(response.data.profile);
-          })
-          .catch(err => {
-            console.log("Erro ao pegar o perfil");
-          })},[]);
+      pegaPerfil();
+    }, []);
 
+    const pegaPerfil = () => {
+      axios
+        .get("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/daltro/person")
+        .then(response => {
+          // função que está pegando um perfil não visualizado ainda para exibir
+          setPerfil(response.data.profile);
+        })
+        .catch(err => {
+          alert("Erro ao pegar o perfil");
+        })
+    }
+    
+    const darMatch = () => {
+      axios
+        .post("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/daltro/choose-person",
+        {
+          "id": perfil.id,
+          "choice": true
+        })
+        .then(response => {
+          pegaPerfil()
+        })
+        .catch(err => {
+          alert("Erro ao curtir o perfil")
+        })
+    }
+  
+    const dispensar = () => {
+      axios
+        .post("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/daltro/choose-person",
+        {
+          "id": perfil.id,
+          "choice": false
+        })
+        .then(response => {
+          pegaPerfil()
+        })
+        .catch(err => {
+          alert("Erro ao dispensar o perfil")
+        })
+    }
 
     return (
         <ContainerMenu>
@@ -69,8 +103,8 @@ export default function Menu() {
                <p>{perfil.bio}</p>
             </Bio>
             <Botoes>
-                <button>Dispensar</button>
-                <button>Curtir</button>
+                <button onClick={dispensar}>Dispensar</button>
+                <button onClick={darMatch}>Curtir</button>
             </Botoes>
         </ContainerMenu>
       );
