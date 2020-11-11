@@ -54,11 +54,15 @@ export default function Menu() {
       axios
         .get("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/daltro/person")
         .then(response => {
-          // função que está pegando um perfil não visualizado ainda para exibir
-          setPerfil(response.data.profile);
+         if (response.data.profile === null) {
+           alert("Por hoje é só pessoal! Volte depois para ver novos perfis!");
+         } else {
+           setPerfil(response.data.profile);  
+         } 
         })
         .catch(err => {
-          alert("Erro ao pegar o perfil");
+          console.log("Erro")
+
         })
     }
     
