@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="112px" height="119.016px" viewBox="130.494 0 112 119.016" enable-background="new 130.494 0 112 119.016"
+	 xml:space="preserve">
+<g>
+	<g>
+		<circle fill="#FFA200" cx="186.494" cy="59.508" r="50.42"/>
+		
+			<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="178.1543" y1="124.5056" x2="178.1543" y2="33.4954" gradientTransform="matrix(1 0 0 -1 8.3398 95.0552)">
+			<stop  offset="0" style="stop-color:#FFFFF0"/>
+			<stop  offset="0.3084" style="stop-color:#FFFFEE"/>
+			<stop  offset="0.45" style="stop-color:#FFFDE6"/>
+			<stop  offset="0.5575" style="stop-color:#FFFADA"/>
+			<stop  offset="0.6479" style="stop-color:#FEF6C7"/>
+			<stop  offset="0.7275" style="stop-color:#FEF1B0"/>
+			<stop  offset="0.7995" style="stop-color:#FEEA93"/>
+			<stop  offset="0.8658" style="stop-color:#FDE270"/>
+			<stop  offset="0.9276" style="stop-color:#FDD948"/>
+			<stop  offset="0.9837" style="stop-color:#FCCF1B"/>
+			<stop  offset="1" style="stop-color:#FCCC0D"/>
+		</linearGradient>
+		<path fill="url(#SVGID_1_)" d="M186.494,61.558c17.262,0,32.279-9.614,39.99-23.776c-7.711-14.165-22.729-23.778-39.99-23.778
+			s-32.279,9.613-39.991,23.778C154.215,51.944,169.232,61.558,186.494,61.558z"/>
+		
+			<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="178.1543" y1="81.0466" x2="178.1543" y2="-9.9566" gradientTransform="matrix(1 0 0 -1 8.3398 95.0552)">
+			<stop  offset="0" style="stop-color:#F8B913"/>
+			<stop  offset="1" style="stop-color:#FCCC0D"/>
+		</linearGradient>
+		<path fill="url(#SVGID_2_)" d="M186.494,61.558c-17.262,0-32.279-9.614-39.991-23.776c-3.515,6.456-5.513,13.858-5.513,21.727
+			c0,25.132,20.373,45.503,45.504,45.503c25.132,0,45.504-20.373,45.504-45.503c0-7.867-1.998-15.271-5.514-21.727
+			C218.773,51.944,203.756,61.558,186.494,61.558z"/>
+	</g>
+	<g>
+		<ellipse transform="matrix(0.2135 -0.9769 0.9769 0.2135 87.5465 206.8359)" cx="172.236" cy="49.044" rx="10.759" ry="4.612"/>
+		<ellipse transform="matrix(0.2136 0.9769 -0.9769 0.2136 205.7967 -157.5535)" cx="200.757" cy="49.046" rx="10.759" ry="4.611"/>
+	</g>
+	<path d="M213.387,91.819c-5.359-7.733-15.396-14.738-26.893-14.738s-21.533,7.006-26.893,14.738
+		c6.084-6.369,15.863-9.394,26.893-9.394S207.303,85.45,213.387,91.819z"/>
+</g>
+</svg>
