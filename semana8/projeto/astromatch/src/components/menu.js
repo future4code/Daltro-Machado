@@ -14,6 +14,7 @@ const ContainerMenu = styled.div`
   text-align: center;
   padding: 0px;
   border: none;
+  margin-top: 30px;
 `
 const Fotos = styled.div`
   padding: 0px;
