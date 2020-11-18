@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import HomePage from "../componentes/HomePage";
 import LoginPage from "../componentes/LoginPage";
@@ -20,7 +20,7 @@ function Router() {
         <Route exact path={"/trips/list"}>
           <ListTripsPage />
         </Route>
-        <Route exact path={"/trips/details"}>
+        <Route exact path={"/trips/:id"}>
           <TripDetailsPage />
         </Route>
         <Route exact path={"/trips/create"}>

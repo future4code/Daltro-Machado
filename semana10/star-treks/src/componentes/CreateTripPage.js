@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { useHistory } from "react-router-dom";
+import { useProtectedPage } from "../hooks/useProtectedPage";
 
 const CreateTripPage = () => {
   const history = useHistory();
+  useProtectedPage();
 
   const criarViagem = () => {
     alert("Viagem Criada!");

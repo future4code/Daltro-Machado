@@ -1,12 +1,39 @@
-import React from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useHistory, useParams } from "react-router-dom";
+import { useProtectedPage } from "../hooks/useProtectedPage";
 
 const TripDetailsPage = () => {
+  const [trip, setTrip] = useState({});
   const history = useHistory();
+  const pathParams = useParams();
+  const id = pathParams.id
 
-  const criarViagem = () => {
-    alert("Viagem Criada!");
+  useProtectedPage();
+
+  useEffect(() => {
+    getTripDetail();
+  }, []);
+
+  const getTripDetail = () => {
+    console.log(id)
+    axios
+      .get(
+        `https://us-central1-labenu-apis.cloudfunctions.net/labeX/daltro-dumont/trip/${id}`,
+        {
+          headers: {
+            auth: localStorage.getItem("token")
+          }
+        }
+      )
+      .then((res) => {
+        setTrip(res.data.trip);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
+
 
   const logOut = () => {
     history.push("/");
@@ -23,15 +50,16 @@ const TripDetailsPage = () => {
       </button>
       <button onClick={logOut}>Logout
       </button>
-      <h1>Marte</h1>
-      <h2>Ano Novo em Marte</h2>
-      <p>5 dias</p>
-      <p>Duração: 7 dias</p>
+      <h1>{trip.planet}</h1>
+      <h2>{trip.name}</h2>
+      <p>Data: {trip.date}</p>
+      <p>Duração: {trip.durationInDays} dias</p>
+      <p>Descrição: {trip.description}</p>
       <p>Candidaturas</p>
-      <p>João Paulo</p>
-      <p>Porque eu quero ir!</p>
-      <button onClick={criarViagem}>Criar
-      </button>
+      {/* <p>{trip.candidates.name}</p>
+      <p>{trip.candidates.applicationText}</p> */}
+      <button>Aprovar</button>
+      <button>Rejeitar</button>
     </div>
   );
 };
