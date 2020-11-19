@@ -1,7 +1,20 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import styled from 'styled-components';
 import { useHistory, useParams } from "react-router-dom";
 import { useProtectedPage } from "../hooks/useProtectedPage";
+import Button from '@material-ui/core/Button'
+
+const MotherDiv = styled.div`
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 0px;
+  border: none;
+  overflow-x: auto;
+  color: white;
+  background-color: black;
+`
 
 const TripDetailsPage = () => {
   const [trip, setTrip] = useState({});
@@ -91,12 +104,12 @@ const TripDetailsPage = () => {
   };
 
   return (
-    <div>
+    <MotherDiv>
       <p>Pagina de Detalhes da Viagem</p>
-      <button onClick={goBack}>Voltar
-      </button>
-      <button onClick={logOut}>Logout
-      </button>
+      <Button variant={'contained'} color={'primary'} onClick={goBack}>Voltar
+      </Button>
+      <Button variant={'contained'} color={'primary'} onClick={logOut}>Logout
+      </Button>
       <h1>{trip.planet}</h1>
       <h2>{trip.name}</h2>
       <p>Data: {trip.date}</p>
@@ -110,12 +123,12 @@ const TripDetailsPage = () => {
             <p>Profissão: {candidate.profession}</p>
             <h5>Por que sou um bom candidato(a)?</h5>
             <p>{candidate.applicationText}</p>
-            <button onClick = {() => aproveCandidate(candidate.id)}>Aprovar</button>
-            <button onClick = {() => denyCandidate(candidate.id)}>Rejeitar</button>
+            <Button variant={'contained'} color={'primary'} onClick = {() => aproveCandidate(candidate.id)}>Aprovar</Button>
+            <Button variant={'contained'} color={'primary'} onClick = {() => denyCandidate(candidate.id)}>Rejeitar</Button>
             </div>  
         })}
 
-    </div>
+    </MotherDiv>
   );
 };
 

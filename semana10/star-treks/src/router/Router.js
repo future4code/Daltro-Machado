@@ -5,6 +5,7 @@ import LoginPage from "../componentes/LoginPage";
 import ListTripsPage from "../componentes/ListTripsPage";
 import TripDetailsPage from "../componentes/TripDetailsPage";
 import CreateTripPage from "../componentes/CreateTripPage";
+import CandidateFormPage from "../componentes/CandidateFormPage";
 import ErrorPage from "../componentes/ErrorPage";
 
 function Router() {
@@ -16,6 +17,9 @@ function Router() {
         </Route>
         <Route exact path="/">
           <HomePage />
+        </Route>
+        <Route exact path={"/candidate/:id"}>
+          <CandidateFormPage />
         </Route>
         <Route exact path={"/trips/list"}>
           <ListTripsPage />

@@ -2,6 +2,18 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useHistory, useParams } from "react-router-dom";
 import styled from 'styled-components';
+import Button from '@material-ui/core/Button'
+
+const MotherDiv = styled.div`
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 0px;
+  border: none;
+  overflow-x: auto;
+  color: white;
+  background-color: black;
+`
 
 const ListTrips = styled.div`
     display: flex;
@@ -39,29 +51,34 @@ const ListTripsPage = () => {
     history.push("/createtrip");
   };
 
+  const goToHomePage = () => {
+    history.push("/");
+  };
+
   const logOut = () => {
     localStorage.removeItem("token");
     history.push("/");
   };
 
   return (
-    <div>
+    <MotherDiv>
       <p>Pagina de Viagens</p>
-      <button onClick={goToCreateTripPage}>Criar Viagem
-      </button>
-      <button onClick={logOut}>Logout
-      </button>
+      <Button variant={'contained'} color={'primary'} onClick={goToHomePage}>Home</Button>
+      <Button variant={'contained'} color={'primary'} onClick={goToCreateTripPage}>Criar Viagem
+      </Button>
+      <Button variant={'contained'} color={'primary'} onClick={logOut}>Logout
+      </Button>
       {trips.map((trip) => {
           return <ListTrips>
             <div>
               <h1>{trip.name}</h1>
               <h3>Data: {trip.date}</h3>
               <p>Descrição: {trip.description}</p>
-              <button onClick = {() => goToTripDetailsPage(trip.id)}>Ver Detalhes</button>
+              <Button variant={'contained'} color={'primary'} onClick = {() => goToTripDetailsPage(trip.id)}>Ver Detalhes</Button>
             </div>
           </ListTrips>       
           })}
-    </div>
+    </MotherDiv>
   );
 };
 
