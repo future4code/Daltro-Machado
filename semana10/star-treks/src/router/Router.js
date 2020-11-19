@@ -23,7 +23,7 @@ function Router() {
         <Route exact path={"/trips/:id"}>
           <TripDetailsPage />
         </Route>
-        <Route exact path={"/trips/create"}>
+        <Route exact path={"/createtrip"}>
           <CreateTripPage />
         </Route>
         <Route>

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useHistory, useParams } from "react-router-dom";
 import styled from 'styled-components';
-import CardTrip from './CardTrip'
 
 const ListTrips = styled.div`
     display: flex;
@@ -24,8 +23,7 @@ const ListTripsPage = () => {
       )
       .then((res) => {
         setTrips(res.data.trips);
-        console.log(res.data.trips)
-        console.log(trips)  
+  
       })
       .catch((err) => {
         console.log(err);
@@ -38,7 +36,7 @@ const ListTripsPage = () => {
   };
 
   const goToCreateTripPage = () => {
-    history.push("/trips/create");
+    history.push("/createtrip");
   };
 
   const logOut = () => {
@@ -55,8 +53,12 @@ const ListTripsPage = () => {
       </button>
       {trips.map((trip) => {
           return <ListTrips>
-            <CardTrip details={goToTripDetailsPage} trip={trip}>
-            </CardTrip>
+            <div>
+              <h1>{trip.name}</h1>
+              <h3>Data: {trip.date}</h3>
+              <p>Descrição: {trip.description}</p>
+              <button onClick = {() => goToTripDetailsPage(trip.id)}>Ver Detalhes</button>
+            </div>
           </ListTrips>       
           })}
     </div>
