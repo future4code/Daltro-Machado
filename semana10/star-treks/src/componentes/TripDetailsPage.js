@@ -3,19 +3,182 @@ import axios from "axios";
 import styled from 'styled-components';
 import { useHistory, useParams } from "react-router-dom";
 import { useProtectedPage } from "../hooks/useProtectedPage";
-import Button from '@material-ui/core/Button'
+import Logo from './img/logo.svg';
 
 const MotherDiv = styled.div`
   width: 100vw;
   height: 100vh;
+  display: grid;
   box-sizing: border-box;
+  grid-template-rows: 20% 80%;
+  row-gap: 20px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   padding: 0px;
   border: none;
-  overflow-x: auto;
+  overflow-x: hidden;
   color: white;
-  background-color: black;
+  background-color: #000000;
+`
+const Header = styled.div`
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-row: 1 / 2;
+  box-sizing: border-box;
+  padding-right: 40px;
+  padding-bottom: 0px;
+  border: none;
+  color: #fdba12;
+`
+const LogoContainer = styled.div`
+  display: flex;
+  grid-column: 1 / 2;
+  box-sizing: border-box;
+  align-items: flex-end;
+  margin: 5px;
+  padding-left: 5px;
+  padding-bottom: 0px;
+  border: none;
+`
+const Menu = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  grid-column: 2 / 3;
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+  border: none;
+  border-bottom: solid;
+  border-color: #bf7e04;
+`
+const TextoMenu = styled.p`
+  font-weight: bold;
+  font-size: 18px;
+  padding-left: 25px;
+  cursor: pointer;
+  margin: 10px 5px;
+  color: darkgray;
+  :hover {
+    color: #fdba12;
+  };
+`
+const BodyContainer = styled.div`
+  width: 100vw;
+  display: grid;
+  box-sizing: border-box;
+  justify-items: center;
+  grid-template-columns: 20% 15% 65%;
+  grid-template-rows: 150px 1fr 1fr;
+  grid-row: 2 / 3;
+  column-gap: 0px;
+  row-gap: 0px;
+  margin: 0px;
+  border: none;
+  color: #fdba12;
+`
+const YellowButton = styled.button`
+  width: 8vw;
+  height: 6vh;
+  margin: 5px;
+  font-weight: bolder;
+  border: none;
+  cursor: pointer;
+  border-radius: 8%;
+  color: black;
+  background-color: #fdba12;
+  :hover {
+    background-color: #bf7e04;
+  };
 `
 
+const TripName = styled.div`
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px;
+  padding: 60px 20px;
+  font-size: 24px;
+  color: white;
+  box-sizing: border-box;
+  border: none;
+`
+const TripDate = styled.div`
+  grid-row: 1 / 2;
+  grid-column: 2 / 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px;
+  padding: 60px 20px;
+  box-sizing: border-box;
+  border-left: solid;
+  border-right: solid;
+  border-color: #fdba12;
+`
+const TripDescription = styled.div`
+  grid-row: 1 / 2;
+  grid-column: 3 / 4;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0px;
+  padding: 60px 20px;
+  color: white;
+  box-sizing: border-box;
+  border: none;
+`
+const TextDescription = styled.p`
+  margin: 0px;
+  padding: 0px;
+  font-size: 16px;
+`
+
+const TripCandidates = styled.div`
+  grid-row: 3 / 4;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 0px;
+  padding: 0px;
+  color: white;
+  box-sizing: border-box;
+  border: solid;
+  border-radius: 5%;
+  border-color: #fdba12;
+`
+const InfoCandidates = styled.div`
+  width: 20vw;
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  color: white;
+  box-sizing: border-box;
+`
+const TextCandidates = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  border: none;
+`
+
+const ButtonCandidates = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  border: none;
+`
 const TripDetailsPage = () => {
   const [trip, setTrip] = useState({});
   const [reload, setReload] = useState(false)
@@ -105,29 +268,49 @@ const TripDetailsPage = () => {
 
   return (
     <MotherDiv>
-      <p>Pagina de Detalhes da Viagem</p>
-      <Button variant={'contained'} color={'primary'} onClick={goBack}>Voltar
-      </Button>
-      <Button variant={'contained'} color={'primary'} onClick={logOut}>Logout
-      </Button>
-      <h1>{trip.planet}</h1>
-      <h2>{trip.name}</h2>
-      <p>Data: {trip.date}</p>
-      <p>Duração: {trip.durationInDays} dias</p>
-      <p>Descrição: {trip.description}</p>
-      <h2>Candidaturas</h2>
-      {trip.candidates && trip.candidates.map(candidate=>{
-          return <div>
-            <h4>Nome: {candidate.name}, {candidate.age} anos</h4>
-            <p>País de Origem: {candidate.country}</p>
-            <p>Profissão: {candidate.profession}</p>
-            <h5>Por que sou um bom candidato(a)?</h5>
-            <p>{candidate.applicationText}</p>
-            <Button variant={'contained'} color={'primary'} onClick = {() => aproveCandidate(candidate.id)}>Aprovar</Button>
-            <Button variant={'contained'} color={'primary'} onClick = {() => denyCandidate(candidate.id)}>Rejeitar</Button>
-            </div>  
-        })}
-
+      <Header>
+        <LogoContainer>
+          <img src={Logo}></img>
+        </LogoContainer>
+        <Menu>
+          <TextoMenu onClick={goBack}>VOLTAR</TextoMenu>
+          <TextoMenu onClick={logOut}>LOGOUT</TextoMenu>
+        </Menu>
+      </Header>
+      <BodyContainer>
+            <TripName>
+              {trip.name}
+            </TripName>
+            <TripDate>
+              {trip.date}
+            </TripDate>
+            <TripDescription>
+              <TextDescription>Duração: {trip.durationInDays} dias</TextDescription>
+              <TextDescription>Planeta: {trip.planet}</TextDescription>
+              <TextDescription>{trip.description}</TextDescription>
+            </TripDescription>
+            <h1>Candidaturas</h1>
+                {trip.candidates && trip.candidates.map(candidate=>{
+                  return  <TripCandidates>
+                      <InfoCandidates>
+                        <TextCandidates>
+                          <p>Nome: {candidate.name}</p>
+                          <p>{candidate.age} anos</p>
+                          <p>País de Origem: {candidate.country}</p>
+                          <p>Profissão: {candidate.profession}</p>
+                          <p>Por que sou um bom candidato(a)?</p>
+                          <p>{candidate.applicationText}</p>
+                        </TextCandidates>
+                        <ButtonCandidates>
+                          <YellowButton onClick = {() => aproveCandidate(candidate.id)}>Aprovar</YellowButton>
+                          <YellowButton onClick = {() => denyCandidate(candidate.id)}>Rejeitar</YellowButton>
+                        </ButtonCandidates>                        
+                      </InfoCandidates>
+                        
+                    </TripCandidates>
+            })}
+            
+      </BodyContainer>
     </MotherDiv>
   );
 };
