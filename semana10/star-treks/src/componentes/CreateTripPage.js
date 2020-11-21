@@ -74,13 +74,12 @@ const BodyContainer = styled.div`
   border: none;
 `
 const FormLogin = styled.form`
-  width: 40vw;
-  height: 160vh;
-  padding: 50px;
+  width: 30vw;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 40px;
+  margin-top: 5px;
   border: solid;
   border-radius: 5%;
   border-color: #fdba12;
@@ -104,7 +103,38 @@ const YellowButton = styled.button`
 const Inputs = styled.input`
   width: 20vw;
   padding: 0px;
-  margin: 30px 10px;
+  margin: 15px 10px;
+  border: none;
+  border-bottom: solid;
+  border-color: #22252a;
+  background-color: black;
+  color: white;
+`
+const InputDate = styled.input`
+  width: 10vw;
+  padding: 0px;
+  margin: 15px 10px;
+  border: none;
+  border-bottom: solid;
+  border-color: #22252a;
+  background-color: #22252a;
+  color: white;
+`
+const InputNumber = styled.input`
+  width: 14vw;
+  padding: 0px;
+  margin: 15px 10px;
+  border: none;
+  border-bottom: solid;
+  border-color: #22252a;
+  background-color: black;
+  color: white;
+`
+
+const Selects = styled.select`
+  width: 20vw;
+  padding: 0px;
+  margin: 20px 10px;
   border: none;
   border-bottom: solid;
   border-color: #22252a;
@@ -119,17 +149,17 @@ export const useForm = (initialValues) => {
     setForm({ ...form, [name]: value });
   };
 
-  return { form, onChange };
-};
+  const resetState = () => {
+    setForm(initialValues);
+  };
+  
+  return { form, onChange, resetState };
+  };
+
 
 
 const CreateTripPage = () => {
-  const { form, onChange } = useForm({ name: "", planet: "", description: "", duration: "", date: "" });
-  /* const [name, setName] = useState("");
-  const [planet, setPlanet] = useState("");
-  const [description, setDescription] = useState("");
-  const [duration, setDuration] = useState("");
-  const [date, setDate] = useState(""); */
+  const { form, onChange, resetState } = useForm({ name: "", planet: "", description: "", duration: "", date: "" });
   const history = useHistory();
   const [today, setToday] = useState("")
   useProtectedPage();
@@ -143,7 +173,7 @@ const CreateTripPage = () => {
     const day = now.getDate() + 1
     const month = now.getMonth() + 1
     const year = now.getFullYear()
-    const data = (day + "-" + month + "-" + year)
+    const data = (year + "-" + month + "-" + day)
     setToday(data)
   }
 
@@ -156,7 +186,7 @@ const CreateTripPage = () => {
 
   const onSubmitForm = (event) => {
     event.preventDefault();
-    //setDuration(Number(duration))
+    console.log(form.date)
     const body = {
       name: form.name,
       planet: form.planet,
@@ -176,72 +206,12 @@ const CreateTripPage = () => {
     )
       .then((res) => {
         alert("Viagem cadastrada com sucesso!");
-/*         setName("");
-        setPlanet("");
-        setDate("");
-        setDescription("");
-        setDuration(""); */
+        resetState();
       })
       .catch((err) => {
         console.log(err);
       });
   };
-
-
-/*   const handleName = (e) => {
-    setName(e.target.value);
-  };
-
-  const handlePlanet = (e) => {
-    setPlanet(e.target.value);
-  };
-
-  const handleDescription = (e) => {
-    setDescription(e.target.value);
-  };
-
-  const handleDuration = (e) => {
-    setDuration(e.target.value);
-  };
-
-  const handleDate = (e) => {
-    setDate(e.target.value);
-  }; */
-
-  /* const criarViagem = () => {
-    setDuration(Number(duration))
-    const body = {
-      name: name,
-      planet: planet,
-      date: date,
-      description: description,
-      durationInDays: duration
-    };
-    
-    axios
-    .post(
-      "https://us-central1-labenu-apis.cloudfunctions.net/labeX/daltro-dumont/trips", body,
-      {
-        headers: {
-          auth: localStorage.getItem("token")
-        }
-      }
-    )
-      .then((res) => {
-        alert("Viagem cadastrada com sucesso!");
-        setName("");
-        setPlanet("");
-        setDate("");
-        setDescription("");
-        setDuration("");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }; */
-  
-
-
 
   const logOut = () => {
     localStorage.removeItem("token");
@@ -266,8 +236,8 @@ const CreateTripPage = () => {
       </Header>
       <BodyContainer>
           <FormLogin onSubmit={onSubmitForm}>
-          <Inputs name={"name"} value={form.name} pattern={"[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ,.?! ]{5,}"} onChange={handleInputChange} placeholder="Qual o nome desta viagem ?"></Inputs>
-          <select name={"planet"} required value={form.planet} onChange={handleInputChange}>
+          <label>Qual o planeta ?</label>
+          <Selects name={"planet"} required value={form.planet} onChange={handleInputChange}>
                 <option value="Mercúrio">Mercúrio</option>
                 <option value="Vênus">Vênus</option>
                 <option value="Marte">Marte</option>
@@ -293,29 +263,34 @@ const CreateTripPage = () => {
                 <option value="Romulos">Romulos</option>
                 <option value="Orion">Orion</option>
                 <option value="Risa">Risa</option>
-            </select>
-          <Inputs
-            name={"description"}
-            value={form.description}
-            pattern={"[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ,.?! ]{30,}"}
-            onChange={handleInputChange}
-            placeholder="Faça uma breve descrição da viagem">
-          </Inputs>
-          <Inputs
-            name={"duration"}
-            value={form.duration}
-            type={"number"}
-            min="50"
-            onChange={handleInputChange}
-            placeholder="Duração em dias da viagem">
-          </Inputs>
-          <Inputs
+            </Selects>
+          <label>Qual a data de Saída ?</label>
+          <InputDate
             name={"date"}
+            required
             value={form.date}
             type={"date"}
             min={today}
             onChange={handleInputChange}>
+          </InputDate>
+          <Inputs name={"name"} required value={form.name} pattern={"[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ,.?! ]{5,}"} placeholder="Qual o nome Viagem ?" onChange={handleInputChange}></Inputs>
+          <Inputs
+            name={"description"}
+            required
+            value={form.description}
+            pattern={"[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ,.?! ]{30,}"}
+            placeholder="Faça uma breve descrição da viagem:" 
+            onChange={handleInputChange}>
           </Inputs>
+          <InputNumber
+            name={"duration"}
+            required
+            value={form.duration}
+            type={"number"}
+            min="50"
+            placeholder="Qual a duração em dias ?" 
+            onChange={handleInputChange}>
+          </InputNumber>
           <YellowButton>Criar</YellowButton>
           </FormLogin>
       </BodyContainer>

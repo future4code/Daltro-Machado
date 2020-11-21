@@ -74,7 +74,6 @@ const BodyContainer = styled.div`
 `
 const FormLogin = styled.form`
   width: 20vw;
-  height: 40vh;
   padding: 50px;
   display: flex;
   flex-direction: column;
@@ -178,10 +177,8 @@ const LoginPage = () => {
       </Header>
       <BodyContainer>
         <FormLogin onSubmit={onSubmitForm}>
-          <label>Digite seu email:</label>
-          <Inputs name={"email"} required value={form.email} type={"email"} onChange={handleInputChange} placeholder="Email"></Inputs>
-          <label>Digite sua senha:</label>
-          <Inputs name={"password"} required value={form.password} type="password" onChange={handleInputChange} placeholder="Senha"></Inputs>
+          <Inputs name={"email"} required value={form.email} type={"email"} onChange={handleInputChange} placeholder="Digite seu Email"></Inputs>
+          <Inputs name={"password"} required value={form.password} type="password" onChange={handleInputChange} placeholder="Digite sua Senha"></Inputs>
           <YellowButton>Fazer Login</YellowButton>
       </FormLogin>
       </BodyContainer>

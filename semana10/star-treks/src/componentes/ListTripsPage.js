@@ -3,6 +3,7 @@ import axios from "axios";
 import { useHistory, useParams } from "react-router-dom";
 import styled from 'styled-components';
 import Logo from './img/logo.svg';
+import DateIcon from './img/calendario.svg';
 
 const MotherDiv = styled.div`
   width: 100vw;
@@ -95,6 +96,7 @@ const ListTrips = styled.div`
   height: 50vh;
   display: grid;
   justify-items: center;
+  align-items: center;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
   margin-top: 10px;
@@ -109,12 +111,28 @@ const TripName = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  align-self: center;
   margin: 0px;
   padding: 0px;
   color: white;
   box-sizing: border-box;
   border: none;
 `
+const DateContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  border: none;
+`
+const IconDate = styled.img`
+  width: 1.5vw;
+  margin-bottom: 2px;
+`
+
 const TripDate = styled.div`
   grid-row: 2 / 3;
   display: flex;
@@ -204,7 +222,10 @@ const ListTripsPage = () => {
           {trips.map((trip) => {
               return <ListTrips>
                       <TripName>{trip.name}</TripName>
-                      <TripDate>Data: {trip.date}</TripDate>
+                      <DateContainer>
+                      <IconDate src={DateIcon}></IconDate>
+                      <TripDate>{trip.date}</TripDate>
+                      </DateContainer>
                       <TripDescription>Descrição: {trip.description}</TripDescription>
                       <ButtonDiv>
                         <YellowButton onClick = {() => goToTripDetailsPage(trip.id)}>Ver Detalhes</YellowButton>

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import Logo from './img/logo.svg';
+import DateIcon from './img/calendario.svg';
 
 const MotherDiv = styled.div`
   width: 100vw;
@@ -115,6 +116,21 @@ const TripName = styled.div`
   box-sizing: border-box;
   border: none;
 `
+const DateContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  border: none;
+`
+const IconDate = styled.img`
+  width: 1.5vw;
+  margin-bottom: 2px;
+`
+
 const TripDate = styled.div`
   grid-row: 2 / 3;
   display: flex;
@@ -202,7 +218,10 @@ const HomePage = () => {
           {trips.map((trip) => {
               return <ListTrips>
                       <TripName>{trip.name}</TripName>
-                      <TripDate>Data: {trip.date}</TripDate>
+                      <DateContainer>
+                      <IconDate src={DateIcon}></IconDate>
+                      <TripDate>{trip.date}</TripDate>
+                      </DateContainer>
                       <TripDescription>Descrição: {trip.description}</TripDescription>
                       <ButtonDiv>
                         <YellowButton onClick = {() => goToCandidateFormPage(trip.id)}>Quero ir!!</YellowButton>

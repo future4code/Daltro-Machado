@@ -2,17 +2,122 @@ import React, { useState } from "react";
 import axios from "axios";
 import styled from 'styled-components';
 import { useHistory, useParams } from "react-router-dom";
-import Button from '@material-ui/core/Button'
+import Logo from './img/logo.svg';
 
 const MotherDiv = styled.div`
   width: 100vw;
   height: 100vh;
+  display: grid;
   box-sizing: border-box;
+  grid-template-rows: 20% 80%;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   padding: 0px;
   border: none;
-  overflow-x: auto;
+  overflow-x: hidden;
   color: white;
+  background-color: #000000;
+`
+const Header = styled.div`
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-row: 1 / 2;
+  box-sizing: border-box;
+  padding-right: 40px;
+  padding-bottom: 0px;
+  border: none;
+  color: #fdba12;
+`
+const LogoContainer = styled.div`
+  display: flex;
+  grid-column: 1 / 2;
+  box-sizing: border-box;
+  align-items: flex-end;
+  margin: 5px;
+  padding-left: 5px;
+  padding-bottom: 0px;
+  border: none;
+`
+const Menu = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  grid-column: 2 / 3;
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+  border: none;
+  border-bottom: solid;
+  border-color: #bf7e04;
+`
+const TextoMenu = styled.p`
+  font-weight: bold;
+  font-size: 18px;
+  padding: 0px;
+  cursor: pointer;
+  margin: 10px 5px;
+  color: darkgray;
+    :hover {
+    color: #fdba12;
+  };
+`
+const BodyContainer = styled.div`
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  justify-items: center;
+  align-items: center;
+  margin: 0px;
+  padding-top: 20px;
+  border: none;
+`
+const FormLogin = styled.form`
+  width: 30vw;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5px;
+  border: solid;
+  border-radius: 5%;
+  border-color: #fdba12;
+  color: white;
+  font-weight: 100;
+`
+const YellowButton = styled.button`
+  width: 8vw;
+  height: 6vh;
+  margin: 5px;
+  font-weight: bolder;
+  border: none;
+  cursor: pointer;
+  border-radius: 8%;
+  color: black;
+  background-color: #fdba12;
+  :hover {
+    background-color: #bf7e04;
+  };
+`
+const Inputs = styled.input`
+  width: 20vw;
+  padding: 0px;
+  margin: 20px 10px;
+  border: none;
+  border-bottom: solid;
+  border-color: #22252a;
   background-color: black;
+  color: white;
+`
+const Selects = styled.select`
+  width: 20vw;
+  padding: 0px;
+  margin: 20px 10px;
+  border: none;
+  border-bottom: solid;
+  border-color: #22252a;
+  background-color: black;
+  color: white;
 `
 
 export const useForm = (initialValues) => {
@@ -68,10 +173,17 @@ const CandidateFormPage = () => {
 
   return (
     <MotherDiv>
-      <Button variant={'contained'} color={'primary'} onClick={goBack}>Voltar
-      </Button>
-      <form onSubmit={onSubmitForm}>
-        <input
+      <Header>
+        <LogoContainer>
+          <img src={Logo}></img>
+        </LogoContainer>
+        <Menu>
+        <TextoMenu onClick={goBack}>VOLTAR</TextoMenu>
+        </Menu>
+      </Header>
+      <BodyContainer>
+        <FormLogin onSubmit={onSubmitForm}>
+        <Inputs
           value={form.name}
           placeholder={"Nome do Candidato"}
           onChange={handleInputChange}
@@ -80,7 +192,7 @@ const CandidateFormPage = () => {
           pattern={"[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ,.?! ]{3,}"}
           required
         />
-        <input
+        <Inputs
           value={form.age}
           placeholder={"Idade"}
           onChange={handleInputChange}
@@ -89,7 +201,7 @@ const CandidateFormPage = () => {
           min="18"
           required
         />
-        <input
+        <Inputs
           value={form.application}
           placeholder={"Por que você é um bom candidato(a)?"}
           onChange={handleInputChange}
@@ -98,17 +210,16 @@ const CandidateFormPage = () => {
           pattern={"[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ,.?! ]{30,}"}
           required
         />
-        <input
+        <Inputs
           value={form.occupation}
           placeholder={"Profissão"}
           onChange={handleInputChange}
           name={"occupation"}
           type={"text"}
-          pattern={"[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ,.?! ]{10,}"}
+          pattern={"[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ,.?! ]{4,}"}
           required
         />
-
-        <select name={"country"} required onChange={handleInputChange} value={form.country}>
+        <Selects name={"country"} required onChange={handleInputChange} value={form.country}>
             <option value="África do Sul">África do Sul</option>
             <option value="Albânia">Albânia</option>
             <option value="Alemanha">Alemanha</option>
@@ -131,11 +242,10 @@ const CandidateFormPage = () => {
             <option value="Benin">Benin</option>
             <option value="Bermudas">Bermudas</option>
             <option value="Botsuana">Botsuana</option>
-            <option value="Brasil" selected>Brasil</option>
+            <option value="Brasil">Brasil</option>
             <option value="Brunei">Brunei</option>
             <option value="Bulgária">Bulgária</option>
             <option value="Burkina Fasso">Burkina Fasso</option>
-            <option value="botão">botão</option>
             <option value="Cabo Verde">Cabo Verde</option>
             <option value="Camarões">Camarões</option>
             <option value="Camboja">Camboja</option>
@@ -283,10 +393,10 @@ const CandidateFormPage = () => {
             <option value="Zaire">Zaire</option>
             <option value="Zâmbia">Zâmbia</option>
             <option value="Zimbábue">Zimbábue</option>
-        </select>
-        <button>Enviar</button>
-      </form>
-
+        </Selects>
+          <YellowButton>Enviar</YellowButton>
+      </FormLogin>
+      </BodyContainer>
     </MotherDiv>
   );
 };

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { useHistory, useParams } from "react-router-dom";
 import { useProtectedPage } from "../hooks/useProtectedPage";
 import Logo from './img/logo.svg';
+import DateIcon from './img/calendario.svg';
 
 const MotherDiv = styled.div`
   width: 100vw;
@@ -66,8 +67,9 @@ const TextoMenu = styled.p`
 const BodyContainer = styled.div`
   width: 100vw;
   display: grid;
-  box-sizing: border-box;
+  //box-sizing: border-box;
   justify-items: center;
+  align-items: center;
   grid-template-columns: 20% 15% 65%;
   grid-template-rows: 150px 1fr 1fr;
   grid-row: 2 / 3;
@@ -102,18 +104,19 @@ const TripName = styled.div`
   padding: 60px 20px;
   font-size: 24px;
   color: white;
-  box-sizing: border-box;
+  //box-sizing: border-box;
   border: none;
 `
 const TripDate = styled.div`
   grid-row: 1 / 2;
   grid-column: 2 / 3;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 0px;
   padding: 60px 20px;
-  box-sizing: border-box;
+  //box-sizing: border-box;
   border-left: solid;
   border-right: solid;
   border-color: #fdba12;
@@ -140,33 +143,43 @@ const TripCandidates = styled.div`
   grid-row: 3 / 4;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  margin: 0px;
+  column-gap: 50px;
+  row-gap: 50px;
+  margin-left: 1000px;
   padding: 0px;
   color: white;
   box-sizing: border-box;
-  border: solid;
-  border-radius: 5%;
-  border-color: #fdba12;
+  border: none;
 `
 const InfoCandidates = styled.div`
-  width: 20vw;
+  width: 300px;
   display: flex;
+  column-gap: 15px;
   flex-direction: row;
   box-sizing: border-box;
   margin: 0px;
+  font-size: 14px;
   padding: 0px;
   color: white;
+  border: solid;
+  border-radius: 5%;
+  border-color: #fdba12;
   box-sizing: border-box;
 `
 const TextCandidates = styled.div`
+  width: 45vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0px;
+  margin: 10px;
   padding: 0px;
-  box-sizing: border-box;
+  //box-sizing: border-box;
   border: none;
+`
+const IconDate = styled.img`
+  width: 1.5vw;
+  margin-bottom: 6px;
 `
 
 const ButtonCandidates = styled.div`
@@ -282,6 +295,7 @@ const TripDetailsPage = () => {
               {trip.name}
             </TripName>
             <TripDate>
+              <IconDate src={DateIcon}></IconDate>
               {trip.date}
             </TripDate>
             <TripDescription>
@@ -290,15 +304,15 @@ const TripDetailsPage = () => {
               <TextDescription>{trip.description}</TextDescription>
             </TripDescription>
             <h1>Candidaturas</h1>
+            <TripCandidates>
                 {trip.candidates && trip.candidates.map(candidate=>{
-                  return  <TripCandidates>
-                      <InfoCandidates>
+                  return  <InfoCandidates>
                         <TextCandidates>
-                          <p>Nome: {candidate.name}</p>
-                          <p>{candidate.age} anos</p>
+                          <h2>{candidate.name}</h2>
+                          <h3>{candidate.age} anos</h3>
                           <p>País de Origem: {candidate.country}</p>
                           <p>Profissão: {candidate.profession}</p>
-                          <p>Por que sou um bom candidato(a)?</p>
+                          <h3>Por que sou um bom candidato(a)?</h3>
                           <p>{candidate.applicationText}</p>
                         </TextCandidates>
                         <ButtonCandidates>
@@ -306,9 +320,8 @@ const TripDetailsPage = () => {
                           <YellowButton onClick = {() => denyCandidate(candidate.id)}>Rejeitar</YellowButton>
                         </ButtonCandidates>                        
                       </InfoCandidates>
-                        
-                    </TripCandidates>
             })}
+            </TripCandidates>
             
       </BodyContainer>
     </MotherDiv>
