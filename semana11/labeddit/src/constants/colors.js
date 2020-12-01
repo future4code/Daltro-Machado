@@ -1,0 +1,5 @@
+export const primaryColor = '#F23827'
+export const HoverColor = '#BF2A2A'
+export const secondaryColor = '#93BFBF'
+export const whiteColor = '#F2F2F2'
+export const blackColor = '#0D0D0D'
