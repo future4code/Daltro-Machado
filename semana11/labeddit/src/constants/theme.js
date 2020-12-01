@@ -1,17 +1,21 @@
 import { createMuiTheme } from '@material-ui/core/styles'
-import { primaryColor, secondaryColor, HoverColor, whiteColor, blackColor } from './colors'
+import { primaryColor, secondaryColor, lightPrimary, darkPrimary, lightSecondary, darkSecondary, whiteColor, blackColor } from './colors'
 
 const theme = createMuiTheme({
     palette: {
         primary: {
-            main: primaryColor,
-            contrastText: '#fff'
+          light: lightPrimary,
+          main: primaryColor,
+          dark: darkPrimary,
+          contrastText: '#fff',
         },
         secondary: {
-            main: secondaryColor,
-            contrastText: '#fff'
-        }
-    }
+          light: lightSecondary,
+          main: secondaryColor,
+          dark: darkSecondary,
+          contrastText: '#000',
+        },
+      },
 })
 
 export default theme;

@@ -1,5 +1,7 @@
 export const goToLogin = (history) => {
-    history.push('/login')
+        localStorage.removeItem("token");
+        localStorage.removeItem("username");
+        history.push('/login')
 }
   
 export const goToSignUp = (history) => {
@@ -7,7 +9,12 @@ export const goToSignUp = (history) => {
 }
   
 export const goToPostFeed = (history) => {
-    history.push('/feed')
+    const token = window.localStorage.getItem("token")
+    if (!token) {
+        alert("Por favor faça o seu login!")
+    } else {
+        history.push('/feed')
+    }
 }
   
 export const goToRecipeDetail = (history, id) => {
@@ -17,3 +24,4 @@ export const goToRecipeDetail = (history, id) => {
 export const goBack = (history) => {
     history.goBack()
 }
+

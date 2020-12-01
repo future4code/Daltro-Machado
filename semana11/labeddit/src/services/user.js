@@ -6,6 +6,7 @@ export const login = (body, history) => {
     
     axios.post(`${BASE_URL}/login`, body).then(response => {
         localStorage.setItem("token", response.data.token)
+        localStorage.setItem("username", response.data.user.username)
         goToPostFeed(history)
     }).catch(error => {
         alert("Email ou senha inválidos!")
@@ -17,6 +18,7 @@ export const signup = (body, history) => {
     
     axios.post(`${BASE_URL}/signup`, body).then(response => {
         localStorage.setItem("token", response.data.token)
+        localStorage.setItem("username", response.data.user.username)
         goToPostFeed(history)
     }).catch(error => {
         console.log(error.message)

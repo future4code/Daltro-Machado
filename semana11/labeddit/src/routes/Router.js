@@ -2,8 +2,8 @@ import React from 'react';
 import {  Switch, Route } from 'react-router-dom';
 import LoginPage from '../screens/LoginPage/LoginPage'
 import SignUpPage from '../screens/SignUpPage/SignUpPage'
-import PostFeedPage from '../screens/RecipesFeedPage/RecipesFeedPage'
-import PostDetailPage from '../screens/RecipeDetailPage/RecipeDetailPage'
+import PostFeedPage from '../screens/PostFeedPage/PostFeedPage'
+import PostDetailPage from '../screens/PostDetailPage/PostDetailPage'
 import ErrorPage from '../screens/ErrorPage/ErrorPage'
 
 const Router = () => {
