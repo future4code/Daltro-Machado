@@ -6,13 +6,13 @@ export const LoginPageContainer = styled.div`
     width: 85vw;
     max-width: 375px;
     padding-top: 15px;
-    margin: 0 auto; //Usado para centralizar na pagina
+    margin: 0 auto;
 `
 
 export const FormContainer = styled.form`
     display: flex;
     flex-direction: column;
-    height: 24vh;
+    height: 32vh;
     justify-content: space-around;
     margin-bottom: 15px;
 `

@@ -17,7 +17,7 @@ export const goToPostFeed = (history) => {
     }
 }
   
-export const goToRecipeDetail = (history, id) => {
+export const goToPostDetail = (history, id) => {
     history.push(`/detail/${id}`)
 }
 

@@ -31,6 +31,7 @@ const LoginPage = () => {
                 <TextField 
                     label="E-mail"
                     variant="outlined"
+                    required
                     type="email"
                     name="email"
                     value={form.email}
@@ -38,7 +39,8 @@ const LoginPage = () => {
                 />
                 <TextField  
                     label="Senha"
-                    variant="outlined"                
+                    variant="outlined"    
+                    required            
                     type="password"
                     name="password"
                     value={form.password}

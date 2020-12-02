@@ -32,6 +32,7 @@ const SignUpPage = () => {
                 <TextField 
                     label="Nome"
                     variant="outlined"
+                    required
                     name="name"
                     value={form.name}
                     onChange={handleInputChange}
@@ -39,6 +40,7 @@ const SignUpPage = () => {
                 <TextField 
                     label="E-mail"
                     variant="outlined"
+                    required
                     type="email"
                     name="email"
                     value={form.email}
@@ -46,7 +48,8 @@ const SignUpPage = () => {
                 />
                 <TextField  
                     label="Senha"
-                    variant="outlined"                
+                    variant="outlined"
+                    required                
                     type="password"
                     name="password"
                     value={form.password}
