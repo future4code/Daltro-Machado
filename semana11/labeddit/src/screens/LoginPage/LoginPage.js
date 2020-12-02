@@ -3,7 +3,7 @@ import {useForm} from "../../hooks/useForm"
 import { login } from '../../services/user';
 import {TextField, Button} from '@material-ui/core'
 import logo from '../../assets/logo_labeddit.png'
-import { FormContainer, LoginPageContainer, Logomarca } from './styles';
+import { TextFieldStyled, ButtonStyled, FormContainer, LoginPageContainer, Logomarca } from './styles';
 import { useHistory } from 'react-router-dom';
 import { useUnprotectPage } from '../../hooks/useUnprotectPage';
 import { goToSignUp } from '../../routes/coordinator'

@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import {TextField} from '@material-ui/core';
+import {TextField, Button} from '@material-ui/core';
 
 
 export const PostFeedPageContainer = styled.div`
@@ -8,12 +8,17 @@ export const PostFeedPageContainer = styled.div`
     align-items: center;
     flex-direction: column;
     width: 85vw;
-    max-width: 350px;
+    max-width: 375px;
     padding-top: 15px;
     margin: 0 auto;
 `
 
 export const TextFieldStyled = styled(TextField)`
+    width: 50vw;
+    min-width: 300px;
+`
+
+export const ButtonStyled = styled(Button)`
     width: 50vw;
     min-width: 300px;
 `
@@ -24,12 +29,11 @@ export const FormContainer = styled.form`
     width: 50vw;
     height: 32vh;
     justify-content: space-around;
-    align-items: center;
     margin-bottom: 15px;
 `
 
 export const Logomarca = styled.img`
-    max-height: 14vh;
+    max-height: 18vh;
     margin: 0 auto;
     
 `

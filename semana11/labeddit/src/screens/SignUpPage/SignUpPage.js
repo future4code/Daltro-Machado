@@ -1,9 +1,8 @@
 import React from 'react';
 import {useForm} from "../../hooks/useForm"
 import {TextField, Button} from '@material-ui/core'
-//import logo from '../../assets/logo_labeddit.png';
 import logo from '../../assets/logo_labeddit.png'
-import { FormContainer, SignupPageContainer } from './styles';
+import { FormContainer, Logomarca, SignupPageContainer } from './styles';
 import { useHistory } from 'react-router-dom';
 import {signup} from "../../services/user"
 import { useUnprotectPage } from '../../hooks/useUnprotectPage';
@@ -27,7 +26,7 @@ const SignUpPage = () => {
 
     return (
         <SignupPageContainer>
-            <img src={logo} />
+            <Logomarca src={logo} />
             <FormContainer onSubmit={handleSubmission} >
                 <TextField 
                     label="Nome"

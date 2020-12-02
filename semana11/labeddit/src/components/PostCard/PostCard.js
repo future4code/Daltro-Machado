@@ -1,7 +1,7 @@
 import React from "react"
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import { CardActionsStyled, CardStyled } from "./styles";
+import { CardActionsStyled, CountVoteContainer, CardStyled } from "./styles";
 import { goToPostDetail } from "../../routes/coordinator";
 import { useHistory } from "react-router-dom";
 import Card from '@material-ui/core/Card';
@@ -29,21 +29,16 @@ const PostCard = (props) => {
                 </Typography>
             </CardContent>
             <CardActionsStyled>
-                <div>
+                <CountVoteContainer>
                     <Button size="small">+</Button>
                     <Typography variant="body2" component="p">
                         {props.votesCount}
                     </Typography>
                     <Button size="small">-</Button>
-                </div>
-                <div>
-                    <Typography variant="body2" component="p">
-                        {props.commentsCount}
-                    </Typography>
-                    <Typography variant="body2" component="p">
-                        Comentários
-                    </Typography>
-                </div>
+                </CountVoteContainer>
+                <Typography variant="h6" component="h6">
+                    {props.commentsCount} Comentários
+                </Typography>
             </CardActionsStyled>
          </CardStyled>
         </Card>

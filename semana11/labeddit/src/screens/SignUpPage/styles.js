@@ -12,7 +12,7 @@ export const SignupPageContainer = styled.div`
 export const FormContainer = styled.form`
     display: flex;
     flex-direction: column;
-    height: 32vh;
+    height: 42vh;
     justify-content: space-around;
     margin-bottom: 15px;
 `

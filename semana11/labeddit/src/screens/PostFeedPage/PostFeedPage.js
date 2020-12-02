@@ -7,7 +7,7 @@ import { useProtectPage } from '../../hooks/useProtectPage';
 import {BASE_URL} from "../../constants/apiConstants"
 import { useRequestData } from '../../hooks/useRequestData';
 import PostCard from '../../components/PostCard/PostCard';
-import { TextFieldStyled, FormContainer, PostFeedPageContainer, Logomarca, LogoContainer } from './styles';
+import { TextFieldStyled, ButtonStyled, FormContainer, PostFeedPageContainer, Logomarca, LogoContainer } from './styles';
 import { useHistory } from 'react-router-dom';
 
 const PostFeedPage = () => {
@@ -53,13 +53,13 @@ const PostFeedPage = () => {
                     value={form.text}
                     onChange={handleInputChange}
                 />
-                <Button
+                <ButtonStyled
                     variant="contained"
                     color="primary"
                     type="submit"
                 >
                     Postar
-                </Button>
+                </ButtonStyled>
             </FormContainer>
             {posts.map(post => {
                 return <PostCard 
