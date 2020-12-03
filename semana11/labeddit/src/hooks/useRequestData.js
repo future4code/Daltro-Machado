@@ -4,6 +4,7 @@ import axios from "axios";
 export function useRequestData(url, initialState) {
   const [data, setData] = useState(initialState);
 
+
   useEffect(() => {
     const token = localStorage.getItem("token")
     
@@ -12,13 +13,29 @@ export function useRequestData(url, initialState) {
             Authorization: token
         }
     }).then((response) => {
-        setData(response.data.posts);
-        console.log("teste, testandoooo")
+        setData(response.data);
     }).catch((error) => {
-        console.log(error.message);
+        console.log("Deu erro!!");
+        console.log("Mensagem de Erro:", error.message);
     });
 
   }, [url]);
 
-  return data;
+  function getData() {
+    const token = localStorage.getItem("token")
+    
+    axios.get(url, {
+        headers: {
+            Authorization: token
+        }
+    }).then((response) => {
+        setData(response.data);
+    }).catch((error) => {
+        console.log("Deu erro!!");
+        console.log("Mensagem de Erro:", error.message);
+    });
+
+  }
+
+  return {data, getData};
 }

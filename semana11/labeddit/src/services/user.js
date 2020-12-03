@@ -21,6 +21,7 @@ export const signup = (body, history) => {
         localStorage.setItem("username", response.data.user.username)
         goToPostFeed(history)
     }).catch(error => {
+        alert("Erro ao cadastar usuário!")
         console.log(error.message)
     })
 }

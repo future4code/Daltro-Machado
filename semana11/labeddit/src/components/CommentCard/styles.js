@@ -7,6 +7,7 @@ export const CardStyled = styled(Card)`
     min-width: 300px;
     margin: 10px;
     cursor: pointer;
+    height: 100vh;
 `
 
 export const CardMediaStyled = styled(CardMedia)`
@@ -27,7 +28,6 @@ export const CountVoteContainer = styled.div`
     justify-content: space-between;
     align-items: center;
 `
-
 export const VoteIcon = styled.img`
     height: 4vh;
     cursor: pointer;

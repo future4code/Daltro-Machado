@@ -1,23 +1,26 @@
 import React from "react"
+import { votePost } from '../../services/votePost';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import { CardActionsStyled, CountVoteContainer, CardStyled } from "./styles";
+import { CardActionsStyled, CountVoteContainer, CardStyled, VoteIcon } from "./styles";
 import { goToPostDetail } from "../../routes/coordinator";
 import { useHistory } from "react-router-dom";
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
+import positivo from '../../assets/positivo.png'
+import negativo from '../../assets/negativo.png'
 
 
 
 
 const PostCard = (props) => {
     const history = useHistory()
+    const bodyUp = {direction: 1}
+    const bodyDown = {direction: -1}
 
     return (
-        <Card>
-         <CardStyled onClick={() => goToPostDetail(history, props.id)}>
-            <CardContent>
+         <CardStyled>
+            <CardContent onClick={() => goToPostDetail(history, props.id)}>
                 <Typography color="textSecondary" gutterBottom>
                     {props.username}
                 </Typography>
@@ -30,18 +33,17 @@ const PostCard = (props) => {
             </CardContent>
             <CardActionsStyled>
                 <CountVoteContainer>
-                    <Button size="small">+</Button>
+                    <VoteIcon src={positivo} onClick={() => votePost(props.id, bodyUp, props.getData)}></VoteIcon>
                     <Typography variant="body2" component="p">
                         {props.votesCount}
                     </Typography>
-                    <Button size="small">-</Button>
+                    <VoteIcon src={negativo} onClick={() => votePost(props.id, bodyDown, props.getData)}></VoteIcon>
                 </CountVoteContainer>
                 <Typography variant="h6" component="h6">
                     {props.commentsCount} Comentários
                 </Typography>
             </CardActionsStyled>
          </CardStyled>
-        </Card>
     )}
 
 export default PostCard

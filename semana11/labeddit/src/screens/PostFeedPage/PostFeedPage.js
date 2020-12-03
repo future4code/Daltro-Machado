@@ -1,7 +1,6 @@
 import React from 'react';
 import {useForm} from "../../hooks/useForm"
 import { createPost } from '../../services/post';
-import {Button} from '@material-ui/core'
 import logo from '../../assets/logo_labeddit.png'
 import { useProtectPage } from '../../hooks/useProtectPage';
 import {BASE_URL} from "../../constants/apiConstants"
@@ -17,7 +16,10 @@ const PostFeedPage = () => {
 
     const {form, onChange} = useForm({text: "", title: ""})
 
-    const posts = useRequestData(`${BASE_URL}/posts`, [])
+
+    const {data, getData}= useRequestData(`${BASE_URL}/posts`, [])
+
+    const posts = data.posts
 
     const handleInputChange = (event) => {
         const {value, name} = event.target
@@ -27,7 +29,7 @@ const PostFeedPage = () => {
 
     const handleSubmission = (event) => {
         event.preventDefault()
-        createPost(form, history)
+        createPost(form, history, getData)
         console.log("teste, testandoooo")
     }
  
@@ -61,7 +63,8 @@ const PostFeedPage = () => {
                     Postar
                 </ButtonStyled>
             </FormContainer>
-            {posts.map(post => {
+            {posts &&
+              posts.map(post => {
                 return <PostCard 
                     key={post.id}
                     id={post.id}
@@ -70,6 +73,7 @@ const PostFeedPage = () => {
                     commentsCount={post.commentsCount}
                     votesCount={post.votesCount}
                     title={post.title}
+                    getData={getData}
                 />
             })}
         </PostFeedPageContainer>

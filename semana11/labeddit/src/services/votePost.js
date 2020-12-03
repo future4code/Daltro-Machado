@@ -1,19 +1,20 @@
 import axios from "axios"
 import {BASE_URL} from "../constants/apiConstants"
-import { goToPostDetail } from "../routes/coordinator"
+import { goToPostFeed } from "../routes/coordinator"
 
-export const createComment = (postId, body, history) => {
+export const votePost = (postId, body, getData) => {
     const token = localStorage.getItem("token")
-    
-    axios.post(`${BASE_URL}/posts/${postId}/comment`, body, { 
+        
+    axios.put(`${BASE_URL}/posts/${postId}/vote`, body, { 
         headers: {
             Authorization: token
         }
     }).then((response) => {
         console.log(response)
-        //goToPostDetail(history)
+        getData()
     }).catch(error => {
-        alert("Erro ao criar Post!")
+        alert("Erro ao votar no Post!")
         console.log(error.message)
+        console.log(body)
     })
 }
