@@ -6,7 +6,7 @@ export const CardStyled = styled(Card)`
     width: 50vw;
     min-width: 300px;
     margin: 10px;
-    height: 100vh;
+    //height: 100vh;
 `
 
 export const CardMediaStyled = styled(CardMedia)`
@@ -34,7 +34,7 @@ export const PostDetailPageContainer = styled.div`
     flex-direction: column;
     width: 60vw;
     max-width: 375px;
-    height: 100vh;
+    //height: 100vh;
     margin: 20px auto;
     padding-top: 15px;
 `
@@ -42,19 +42,20 @@ export const PostDetailPageContainer = styled.div`
 export const TextFieldStyled = styled(TextField)`
     width: 50vw;
     min-width: 300px;
+    margin-top: 15px;
 `
 
 export const ButtonStyled = styled(Button)`
     width: 50vw;
     min-width: 300px;
-    margin-top: 5px;
+    margin-top: 15px;
 `
 
 export const FormContainer = styled.form`
     display: flex;
     flex-direction: column;
     width: 50vw;
-    height: 52vh;
+    //height: 25vh;
     justify-content: space-around;
     margin-bottom: 15px;
 `

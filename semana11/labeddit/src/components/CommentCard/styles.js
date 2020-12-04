@@ -7,7 +7,6 @@ export const CardStyled = styled(Card)`
     min-width: 300px;
     margin: 10px;
     cursor: pointer;
-    height: 100vh;
 `
 
 export const CardMediaStyled = styled(CardMedia)`

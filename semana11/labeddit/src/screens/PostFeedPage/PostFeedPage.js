@@ -14,7 +14,7 @@ const PostFeedPage = () => {
     
     useProtectPage()
 
-    const {form, onChange} = useForm({text: "", title: ""})
+    const {form, onChange, resetForm} = useForm({text: "", title: ""})
 
 
     const {data, getData}= useRequestData(`${BASE_URL}/posts`, [])
@@ -30,6 +30,7 @@ const PostFeedPage = () => {
     const handleSubmission = (event) => {
         event.preventDefault()
         createPost(form, history, getData)
+        resetForm()
         console.log("teste, testandoooo")
     }
  
