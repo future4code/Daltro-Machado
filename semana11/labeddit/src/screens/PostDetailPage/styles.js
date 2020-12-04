@@ -21,15 +21,15 @@ export const CountVoteContainer = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    width: 3vw;
-    min-width: 150px;
+    width: 2vw;
+    min-width: 100px;
     justify-content: space-between;
     align-items: center;
 `
 
 export const PostDetailPageContainer = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
     width: 60vw;

@@ -34,7 +34,6 @@ const PostFeedPage = () => {
         event.preventDefault()
         createPost(form, history, getData)
         resetForm()
-        console.log("teste, testandoooo")
     }
  
     return (

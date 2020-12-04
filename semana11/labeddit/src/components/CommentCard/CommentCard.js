@@ -45,12 +45,10 @@ const CommentCard = (props) => {
                 Authorization: token
             }
         }).then((response) => {
-            console.log(response)
             getData()
         }).catch(error => {
             alert("Erro ao votar no comentário!")
-            console.log(error.message)
-            console.log(body)
+            
         })
     }
 
@@ -81,12 +79,10 @@ const CommentCard = (props) => {
                 Authorization: token
             }
         }).then((response) => {
-            console.log(response)
             getData()
         }).catch(error => {
             alert("Erro ao votar no comentário!")
-            console.log(error.message)
-            console.log(body)
+            
         })
     }
 

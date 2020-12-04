@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import {useForm} from "../../hooks/useForm"
 import logo from '../../assets/logo_labeddit.png'
@@ -27,11 +27,24 @@ const PostDetailPage = () => {
     const postDetails = data.post
     const postComments = postDetails && postDetails.comments
     const orderPostsComments = postComments && postComments.sort((a, b) => a.createdAt < b.createdAt ? 1 : -1)
+    //const voteDirection = orderPostsComments && orderPostsComments.userVoteDirection
     const [buttonUp, setButtonUp] = useState(false)
     const [buttonDown, setButtonDown] = useState(false)
     const [buttonUpIcon, setButtonUpIcon] = useState(positivo_BW)
     const [buttonDownIcon, setButtonDownIcon] = useState(negativo_BW)
     
+
+/*     useEffect(() => {
+        if (voteDirection === 1) {
+            setButtonUp(true)
+        } else {
+            if (voteDirection === -1) {
+              setButtonDown(true)
+            }
+        }
+    }, [voteDirection, setButtonUp, setButtonDown]) */
+
+
     const {form, onChange, resetForm} = useForm({text: ""})
    
     const handleInputChange = (event) => {
@@ -44,13 +57,13 @@ const PostDetailPage = () => {
         createComment(postDetails.id, form, getData, history)
         resetForm()
         getData()
-        console.log("teste, testandoooo")
+
     }
  
     const voteUpPost = (postId, button, getData) => {
         const token = localStorage.getItem("token")
         let body = {direction: 0}
-        
+                
         if (button) {
             setButtonUp(!buttonUp)
             body = {direction: 0}
@@ -74,12 +87,10 @@ const PostDetailPage = () => {
                 Authorization: token
             }
         }).then((response) => {
-            console.log(response)
             getData()
         }).catch(error => {
             alert("Erro ao votar no Post!")
-            console.log(error.message)
-            console.log(body)
+            
         })
     }
 
@@ -110,12 +121,11 @@ const PostDetailPage = () => {
                 Authorization: token
             }
         }).then((response) => {
-            console.log(response)
             getData()
         }).catch(error => {
             alert("Erro ao votar no Post!")
-            console.log(error.message)
-            console.log(body)
+            
+
         })
     }
 

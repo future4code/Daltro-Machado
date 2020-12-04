@@ -15,7 +15,7 @@ const Container = styled.div`
 `
 
 const App = () => {
-  const [labelLog, setLabelLog] = useState("Olá Visitante! Faça o seu Login")
+  const [labelLog, setLabelLog] = useState("Olá! Faça o Login")
   const data = {labelLog, setLabelLog};
 
   return (

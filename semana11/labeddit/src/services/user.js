@@ -10,7 +10,7 @@ export const login = (body, history) => {
         goToPostFeed(history)
     }).catch(error => {
         alert("Email ou senha inválidos!")
-        console.log(error.message)
+        
     })
 }
 
@@ -22,6 +22,6 @@ export const signup = (body, history) => {
         goToPostFeed(history)
     }).catch(error => {
         alert("Erro ao cadastar usuário!")
-        console.log(error.message)
+        
     })
 }

@@ -15,8 +15,8 @@ export function useRequestData(url, initialState) {
     }).then((response) => {
         setData(response.data);
     }).catch((error) => {
-        console.log("Deu erro!!");
-        console.log("Mensagem de Erro:", error.message);
+        console.log(error.message)
+        ;
     });
 
   }, [url]);
@@ -31,8 +31,8 @@ export function useRequestData(url, initialState) {
     }).then((response) => {
         setData(response.data);
     }).catch((error) => {
-        console.log("Deu erro!!");
-        console.log("Mensagem de Erro:", error.message);
+        console.log(error.message)
+        ;
     });
 
   }

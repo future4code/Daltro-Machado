@@ -22,8 +22,8 @@ export const CountVoteContainer = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    width: 3vw;
-    min-width: 150px;
+    width: 2vw;
+    min-width: 100px;
     justify-content: space-between;
     align-items: center;
 `

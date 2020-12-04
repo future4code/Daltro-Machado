@@ -9,11 +9,9 @@ export const votePost = (postId, body, getData) => {
             Authorization: token
         }
     }).then((response) => {
-        console.log(response)
         getData()
     }).catch(error => {
         alert("Erro ao votar no Post!")
-        console.log(error.message)
-        console.log(body)
+        
     })
 }

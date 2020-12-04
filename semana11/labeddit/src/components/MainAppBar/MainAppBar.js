@@ -16,7 +16,7 @@ const MainAppBar = () => {
     const goToLogin = (history) => {
       localStorage.removeItem("token");
       localStorage.removeItem("username");
-      setLabelLog("Olá Visitante! Faça o seu Login")
+      setLabelLog("Olá! Faça o Login")
       history.push('/login')
 }
 

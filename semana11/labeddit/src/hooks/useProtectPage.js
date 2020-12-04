@@ -14,7 +14,7 @@ export const useProtectPage = () => {
         const username = window.localStorage.getItem("username")
 
         if (token) {
-            global.setLabelLog("Olá " + username + "! Clique para fazer Logout!")
+            global.setLabelLog("Olá " + username + "! / Logout")
         } else {
             goToLogin(history)
         }

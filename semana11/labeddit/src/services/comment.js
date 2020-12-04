@@ -10,10 +10,9 @@ export const createComment = (postId, body, getData, history) => {
             Authorization: token
         }
     }).then((response) => {
-        console.log(response)
         getData()
     }).catch(error => {
         alert("Erro ao criar comentário!")
-        console.log(error.message)
+        
     })
 }

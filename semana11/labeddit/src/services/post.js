@@ -10,10 +10,9 @@ export const createPost = (body, history, getData) => {
             Authorization: token
         }
     }).then((response) => {
-        console.log(response)
         getData()
     }).catch(error => {
         alert("Erro ao criar Post!")
-        console.log(error.message)
+        
     })
 }
