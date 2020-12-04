@@ -1,4 +1,5 @@
-import React from 'react'
+import {useState} from 'react'
+import GlobalStateContext from "./globalContext/GlobalStateContext";
 import Router from './routes/Router';
 import { BrowserRouter } from 'react-router-dom'
 import './App.css'
@@ -14,15 +15,20 @@ const Container = styled.div`
 `
 
 const App = () => {
+  const [labelLog, setLabelLog] = useState("Olá Visitante! Faça o seu Login")
+  const data = {labelLog, setLabelLog};
+
   return (
-    <ThemeProvider theme={theme}>
-      <BrowserRouter>
-        <MainAppBar />
-        <Container>
-          <Router />
-        </Container>
-      </BrowserRouter>
-    </ThemeProvider>
+    <GlobalStateContext.Provider value={data}>
+      <ThemeProvider theme={theme}>
+        <BrowserRouter>
+          <MainAppBar />
+          <Container>
+            <Router />
+          </Container>
+        </BrowserRouter>
+      </ThemeProvider>
+    </GlobalStateContext.Provider>
   );
 }
 

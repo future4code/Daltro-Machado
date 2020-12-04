@@ -26,6 +26,7 @@ const PostDetailPage = () => {
     const {data, getData} = useRequestData(`${BASE_URL}/posts/${params.id}`, [])
     const postDetails = data.post
     const postComments = postDetails && postDetails.comments
+    const orderPostsComments = postComments && postComments.sort((a, b) => a.createdAt < b.createdAt ? 1 : -1)
     const [buttonUp, setButtonUp] = useState(false)
     const [buttonDown, setButtonDown] = useState(false)
     const [buttonUpIcon, setButtonUpIcon] = useState(positivo_BW)
@@ -171,7 +172,7 @@ const PostDetailPage = () => {
                 
                 <CardStyled>
                    {postComments &&
-                        postComments.map(comment => {
+                        orderPostsComments.map(comment => {
                         return <CommentCard 
                             key={comment.id}
                             id={comment.id}
