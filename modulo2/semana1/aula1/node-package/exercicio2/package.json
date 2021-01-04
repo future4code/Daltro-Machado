@@ -1,0 +1,29 @@
+{
+  "name": "aula1",
+  "version": "1.0.0",
+  "description": "Primeira aula de backend da Dumont",
+  "main": "index.js",
+  "scripts": {
+    "start": "clear && node ./src/start.js",
+    "test": "echo 'Error: no test specified'",
+    "exibeIdade":"clear && node ./src/exibeIdade.js",
+    "tarefas":"clear && node ./src/tarefas.js",
+    "search-country-by-name":"clear && node ./src/searchCountryByName.js"
+  },
+  "keywords": [
+    "backend",
+    "node",
+    "package.json"
+ ],
+ "author": "Daltro Machado",
+ "license": "ISC",
+ "dependencies": {
+    "chalk": "^4.1.0"
+ },
+ "devDependencies": {
+    "typescript": "^4.1.3"
+ }
+}
+
+
+
