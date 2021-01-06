@@ -79,72 +79,25 @@ app.get('/countries/:id', (req: Request, res: Response) => {
       
       if (req.params.id) {
          const id: string = req.params.id;
-         const name: string = req.body.name;
-         const capital: string = req.body.capital;
-
-
-
-
+         if ((req.body.name) || (req.body.capital))  {
+            const name: string = req.body.name;
+            const capital: string = req.body.capital;
+            countries.forEach((country) => {
+               if (country.id === Number(id)) {
+                  country.name = name
+                  country.capital = capital
+               }
+            })
+         } else {
+            res.status(400).send("Invalid Parameters")
+         }
          
       } else {
          res.status(400).send("Invalid Parameters")
       }
-
    });
 
 
-   app.delete("/countries/:id", (req:Request, res:Response)=>{
-      let errorCode: number = 400
-      //inicio de um sonho
-      try {
-   
-         if(!req.headers.authorization){
-            errorCode = 401
-            throw new Error()
-         }
-   
-         const countryIndex: number = countries.findIndex(
-            (country) => country.id === Number(req.params.id)
-         )
-   
-            if(countryIndex === -1){
-               errorCode = 404
-               throw new Error()
-            }
-   
-         countries.splice(countryIndex, 1)
-   //deu tudo certo
-         res.status(200).end()
-      } catch (error) {
-         //deu tudo errado
-         console.log(error)
-         res.status(errorCode).end()
-      }
-   })
-
-
-
-
-
-
-
-
-
-// aula
-
-
-app.get('/test/:number', (req: Request, res: Response) => {
-    if(isNaN(Number(req.params.number))){
-        res.send("").status(422);
-    }
-    res.send(
-      `Seu número da sorte é ${Number(req.params.number) + 3}!
-    `)
-  })
- 
- 
-
- 
  app.listen(3003, () => {
     console.log("Servidor rodando na porta 3003")
  })
