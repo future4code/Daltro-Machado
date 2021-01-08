@@ -81,6 +81,40 @@ app.get("/user", (req: Request, res: Response) => {
         .send(result)
     })
    
+// Criando endpoint para Exibir Saldo
+
+app.get("/user/:cpf", (req: Request, res: Response)=>{
+
+    let errorCode: number = 400;
+
+    try {
+
+        if(!req.params.cpf){
+            errorCode = 422;
+            throw new Error("CPF inválido. Preencha corretamente.");
+        }
+
+        const myUser = users.find(((u: user) => u.cpf === req.params.cpf));
+        if (!myUser) {
+            errorCode = 404;
+            throw new Error("Usuário não encontrado");
+        }
+
+        const result = {
+            id: myUser.id,
+            name: myUser.name,
+            cpf: myUser.cpf,
+            Saldo: myUser.balance
+        }
+
+        res.status(200).send(result);
+
+        
+    } catch (error) {
+        res.status(errorCode).send({message: error.message});
+    }
+
+});
 
 
 // Criando um usuário/conta
@@ -114,8 +148,16 @@ app.post("/user", (req: Request, res: Response)=>{
             throw new Error("Algum campo está inválido. Preencha corretamente.");
         }
 
-        // Valida a idade mínima de 18 anos
+        // Valida se CPF já existe.
+        const myUserIndex = users.findIndex(((u: user) => u.cpf === reqBody.cpf));
 
+        if (myUserIndex > -1) {
+            errorCode = 409;
+            throw new Error("Número de CPF já existente!");
+        }
+
+
+        // Valida a idade mínima de 18 anos         
         if ((yearNow - birthYear) < 18) {
             errorCode = 401;
             throw new Error("Idade insuficiente para abertura de conta!");
@@ -124,9 +166,17 @@ app.post("/user", (req: Request, res: Response)=>{
                 if (monthNow < birthMonth) {
                     errorCode = 401;
                     throw new Error("Idade insuficiente para abertura de conta!");
+                } else {
+                    if (monthNow === birthMonth) {
+                        if (dayNow < birthDay) {
+                            errorCode = 401;
+                            throw new Error("Idade insuficiente para abertura de conta!");
+                        }
+                    }
                 }
             }
         }
+
 
         users.push(reqBody);
     
@@ -137,6 +187,57 @@ app.post("/user", (req: Request, res: Response)=>{
     }
 
 });
+
+// Criando Endpoint para Adicionar valor à conta
+
+app.put("/user", (req: Request, res: Response)=>{
+
+    let errorCode: number = 400;
+
+    try {
+        const reqBody: {name: string, cpf: string, balance: number} = {
+            name: req.body.name,
+            cpf: req.body.cpf,
+            balance: Number(req.body.balance)
+        }
+
+        if(!reqBody.name){
+            errorCode = 422;
+            throw new Error("Nome inválido. Preencha corretamente.");
+        }
+
+        if(!reqBody.cpf) {
+            errorCode = 422;
+            throw new Error("CPF inválido");
+        }
+
+        if(isNaN(Number(reqBody.balance))) {
+            errorCode = 422;
+            throw new Error("Valor inválido");
+        }
+
+        const myUserIndex = users.findIndex(((u: user) => u.cpf === reqBody.cpf));
+
+        if (myUserIndex === -1) {
+            errorCode = 404;
+            throw new Error("Usuário não encontrado");
+        }
+
+        if (users[myUserIndex].name !== reqBody.name) {
+            errorCode = 404;
+            throw new Error("Dados Divergentes! Verifique o nome ou CPF informados.");
+        }
+
+        users[myUserIndex].balance += reqBody.balance;
+    
+        res.status(200).send({message: "Saldo Adicionado com sucesso!"});
+        
+    } catch (error) {
+        res.status(errorCode).send({message: error.message});
+    }
+
+});
+
 
 
  // Criando o servidor  
