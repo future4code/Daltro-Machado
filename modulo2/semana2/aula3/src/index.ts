@@ -44,7 +44,9 @@ const searchActor = async (name: string): Promise<any> => {
     const result = await connection.raw(`
       SELECT COUNT(*) as count FROM Actor WHERE gender = "${gender}"
     `);
-    const count = result[0][0].count;
+    const count = result.count;
+    //console.log("result:", result)
+    //console.log("count:", count)
     return count;
   };
 
@@ -121,8 +123,9 @@ app.get("/actor/search", async (req: Request, res: Response) => {
     try {
       const gender: string = req.query.gender as string;
       const totalGender = await countActors(gender);
-  
-      res.status(200).send(totalGender)
+      //console.log("result:", totalGender)
+    
+      res.status(200).send(totalGender[0])
     } catch (err) {
       res.status(400).send({
         message: err.message,
@@ -209,19 +212,52 @@ app.delete("/actor/:id", async (req: Request, res: Response) => {
     }
   });
 
-/* app.get('/', testEndpoint)
 
-async function testEndpoint(req:Request, res:Response): Promise<void>{
-  try {
+// Exercício 6
+
+const getAllMovies = async (): Promise<any> => {
     const result = await connection.raw(`
-      SELECT * FROM Actor
+      SELECT * FROM Movies LIMIT 15
     `)
-
-    res.status(200).send(result)
-  } catch (error) {
-    res.status(400).send(error.message)
+    return result
   }
-} */
+
+  app.get("/movie/all", async (req: Request, res: Response) => {
+    try {
+      const result = await getAllMovies();
+  
+      res.status(200).send(result[0])
+    } catch (err) {
+      res.status(400).send({
+        message: err.message,
+      });
+    }
+  });
+  
+
+// Exercício 7
+
+const searchMovie = async (word: string): Promise<any> => {
+    const result = await connection.raw(`
+      SELECT * FROM Movies WHERE name LIKE "%${word}%" OR synopsis LIKE "%${word}%"
+      ORDER BY release_date ASC 
+    `)
+    return result
+  }
+
+
+app.get("/movie/search", async (req: Request, res: Response) => {
+    try {
+      const word: string = req.query.word as string;
+      const result = await searchMovie(word);
+  
+      res.status(200).send(result[0])
+    } catch (err) {
+      res.status(400).send({
+        message: err.message,
+      });
+    }
+  });
 
 
 const server = app.listen(process.env.PORT || 3003, () => {
