@@ -1,0 +1,2 @@
+### Exercício 1
+a) Quando usamos o raw a resposta do banco inclui informações extras além das contidas nas linhas das tabelas. Essas informações são enviadas em um segundo array, fazendo com que a resposta seja um grande array composto com outros dois arrays. No primeiro "subarray" estão as informações dos elementos (as que queremos) e no segundo array as informações complementares que, neste caso, podemos ignorar.
