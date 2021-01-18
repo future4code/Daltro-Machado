@@ -218,7 +218,7 @@ app.get("/user/search", async (
       const users: any = await connection
          .select("*")
          .from("aula48_exercicio")
-         .where(`%${field}%`, "LIKE", `%${search}%`)
+         .where(`${field}`, "LIKE", `%${search}%`)
          .orderBy(orderBy, orderType)
          .limit(resultsPerPage)
          .offset(offset)
