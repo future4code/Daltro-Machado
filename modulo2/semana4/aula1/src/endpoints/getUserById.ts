@@ -9,9 +9,13 @@ export default async function getUserById(
    let errorCode = 400
    try {
       const token = req.headers.authorization as string;
+      console.log("Token:", token)
+
       const authenticationData = getTokenData(token);
+      console.log("authenticationData:", authenticationData)
 
       const user = await selectUserById(authenticationData.id)
+      console.log("user:", user)
 
       if (!user) {
         errorCode = 404

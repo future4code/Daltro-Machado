@@ -38,7 +38,7 @@ export default async function createUser(
         }
 
         const token = generateToken(user.id);
-        res.status(200).send(`"token:, ${token}"`);
+        res.status(200).send(`{token: ${token}}`);
 
     } catch (error) {
         res.status(errorCode).send({

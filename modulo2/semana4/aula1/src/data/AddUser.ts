@@ -1,5 +1,4 @@
-import knex from "knex";
-import { connection } from "..";
+import { connection } from "../index";
 
 
 	const userTableName = "User";

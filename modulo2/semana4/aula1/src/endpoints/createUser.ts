@@ -34,7 +34,7 @@ export default async function createUser(
 
         res
             .status(200)
-            .send(`"token:, ${token}"`);
+            .send(`{token: ${token}}`);
 
     } catch (error) {
         res.status(errorCode).send({
