@@ -2,8 +2,9 @@ import { Request, Response } from "express";
 import selectUserById from "../data/selectUserById";
 import { getTokenData } from "../service/tokenGenerate"
 import { AuthenticationData} from "../service/tokenGenerate"
+import deleteUser from "../data/deleteUser"
 
-export default async function getUserById(
+export default async function removeUserById(
    req: Request,
    res: Response
 ) {
@@ -14,23 +15,23 @@ export default async function getUserById(
       
       const tokenData: AuthenticationData = getTokenData(authorization!)
       
-      if (tokenData.role !== "NORMAL") {
+      if (tokenData.role !== "ADMIN") {
          errorCode = 401
-         throw new Error("Apenas usuários normais podem acessar esta página");
+         throw new Error("Apenas Administradores podem apagar um usuário");
        }
 
-      const user = await selectUserById(tokenData.id)
+      const user = await selectUserById(req.params.id)
+
+         if (user.length===0) {
+            errorCode = 422;
+            throw new Error("Usuário inexistente.")
+         }
+
+
+      await deleteUser(req.params.id)
       
 
-      if (!user) {
-        errorCode = 404
-         throw new Error("Usuário não encontrado")
-      }
-
-      res.status(200).send({
-         id: user.id,
-         email: user.email
-       })
+      res.status(200).send("Usuário apagado com sucesso")
 
    } catch (error) {
       res.status(errorCode).send({
@@ -38,5 +39,6 @@ export default async function getUserById(
       })
    }
 }
+
 
 
