@@ -15,18 +15,3 @@
 
     Nãoo será necessário, uma vez que este endpoint não lida diretamente com a senha do usuário. A validação nele acontece através do token informado no header da requisição.
 
-
-### Exercicio 3
-
-## Letra a
-    O "as string" informa ao typescript que a informação que virá do ".env" virá como uma string. É uma afirmação, uma garantia que o tipo de dado enviado será uma string.
-
-
-
-### Exercicio 7
-
-## Letra a
-    A linha "as any" está informando que o resultado da função "jwt.verify() que será armazenado na variável "payload" poderá assumir qualquer tipo de dados.
-
-
-
