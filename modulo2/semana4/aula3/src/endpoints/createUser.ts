@@ -12,6 +12,7 @@ export default async function createUser(
     res: Response
 ) {
     try {
+        let complement: string = ""
 
         if (
             !req.body.name ||
@@ -22,20 +23,29 @@ export default async function createUser(
             !req.body.cep ||
             !req.body.number
         ) {
-          throw new Error('Os campos "name","nickname", "email", "password", "cep" e "number", devem ser preenchidos!')
+          throw new Error('Os campos "name","nickname", "email", "password", "role", "cep" e "number", devem ser informados!')
         }
 
-        const id: string = generateId()
-        const idAddress: string = generateId()
+        if (req.body.complement) {
+            complement = req.body.complement
+        }
         
-        const cypherPassword = await hash(req.body.password);
 
-        if(isNaN(Number(req.body.cep)) || req.body.cep.includes("-")){
+         if(isNaN(Number(req.body.cep)) || req.body.cep.includes("-")){
             throw new Error("Digite o CEP apenas com números e sem o hifen!");
         }
 
+        const id: string = generateId()
+
+        const idAddress: string = generateId()
+
+        const cypherPassword = await hash(req.body.password);
+
         const address: address = await getAddressByCep(req.body.cep);
 
+      
+
+        
         await insertUser(
             id,
             req.body.name,
@@ -45,15 +55,19 @@ export default async function createUser(
             req.body.role,
         )
 
+        console.log("req.body.number:", req.body.number)
+        console.log("address.name:", address.name)
+        console.log("req.body.complement:", req.body.complement)
+
         await insertUserAddress(
             idAddress,
             address.name,
             req.body.number,
-            req.body.complement,
             address.neighbourhood,
             address.city,
             address.state,
-            id            
+            id,
+            complement
         )
 
          const token: string = generateToken({

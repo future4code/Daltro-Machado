@@ -19,6 +19,6 @@ export default async function insertUserAddress(
         state,
         user_id,
         complement
-    }).into('to_do_list_users')
+    }).into('users_address')
 }
 
