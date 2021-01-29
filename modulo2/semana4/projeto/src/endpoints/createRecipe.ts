@@ -45,7 +45,7 @@ export default async function createRecipe(
          tokenData.id
       )
 
-      res.status(400).send({
+      res.status(200).send({
          message: "Receita criada com sucesso!"
       })
 

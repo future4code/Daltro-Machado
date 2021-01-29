@@ -8,8 +8,8 @@ import getUserByToken from './endpoints/getUserByToken'
 import getUserById from './endpoints/getUserById'
 import createRecipe from './endpoints/createRecipe'
 import getRecipeById from './endpoints/getRecipeById'
-
-import editUser from './endpoints/editUser'
+import followUser from './endpoints/followUser'
+import unFollowUser from './endpoints/unFollowUser'
 
 
 
@@ -26,7 +26,6 @@ export const connection = knex({
    }
 })
 
-
 const app = express()
 app.use(express.json())
 app.use(cors())
@@ -37,15 +36,12 @@ app.get("/", async function(req,res){
 
 app.post('/signup', createUser)
 app.post("/login", login)
-app.get('/user/profile', getUserByToken)
 app.get('/user/:id', getUserById)
+app.get('/user/profile', getUserByToken)
 app.post('/recipe', createRecipe)
 app.get('/recipe/:id', getRecipeById)
-
-app.post('/user/edit', editUser)
-
-
-
+app.post('/user/follow', followUser)
+app.post('/user/unfollow', unFollowUser)
 
 
 app.listen(3003, () => {

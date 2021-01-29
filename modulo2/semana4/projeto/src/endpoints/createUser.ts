@@ -13,7 +13,7 @@ export default async function createUser(
 
     try {
 
-
+      
         if (
             !req.body.name ||
             !req.body.email ||
@@ -23,7 +23,8 @@ export default async function createUser(
           throw new Error('Os campos "name", "email", "password", e "role" devem ser informados!')
         }
 
-        if (req.body.password.lenght < 6) {
+        
+        if (req.body.password.length < 6) {
             throw new Error('Sua senha precisa ter no mínimo 6 caracteres')
         }
 
