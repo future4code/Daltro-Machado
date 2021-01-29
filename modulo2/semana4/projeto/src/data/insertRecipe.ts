@@ -1,18 +1,18 @@
 import { connection } from "..";
 
-export default async function insertTask(
+export default async function insertRecipe(
     id: string,
     title: string,
     description: string,
-    deadline: string,
+    create_date: string,
     authorId: string
 ) {
-    await connection('to_do_list_tasks')
+    await connection('Cookenu_Recipes')
         .insert({
             id,
             title,
             description,
-            deadline,
+            create_date,
             author_id: authorId
         })
 }

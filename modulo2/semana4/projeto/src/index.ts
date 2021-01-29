@@ -6,10 +6,11 @@ import createUser from './endpoints/createUser'
 import login from './endpoints/login'
 import getUserByToken from './endpoints/getUserByToken'
 import getUserById from './endpoints/getUserById'
+import createRecipe from './endpoints/createRecipe'
+import getRecipeById from './endpoints/getRecipeById'
 
 import editUser from './endpoints/editUser'
-import createTask from './endpoints/createTask'
-import getTaskById from './endpoints/getTaskById'
+
 
 
 dotenv.config()
@@ -38,11 +39,12 @@ app.post('/signup', createUser)
 app.post("/login", login)
 app.get('/user/profile', getUserByToken)
 app.get('/user/:id', getUserById)
-
+app.post('/recipe', createRecipe)
+app.get('/recipe/:id', getRecipeById)
 
 app.post('/user/edit', editUser)
-app.put('/task', createTask)
-app.get('/task/:id', getTaskById)
+
+
 
 
 
