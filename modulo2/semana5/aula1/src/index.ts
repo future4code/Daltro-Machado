@@ -9,7 +9,7 @@ app.use(cors())
 app.put('/signup', signup)
 app.post('/login', login)
 app.get('/all', getAll)
-app.get('/:id', deleteUserById)
+app.delete('/:id', deleteUserById)
 
 app.listen(3003, () => {
    console.log('Servidor rodando na porta 3003')

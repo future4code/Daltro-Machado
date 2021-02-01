@@ -65,6 +65,7 @@ export const businessLogin = async (
    }
 
    const user: user = await selectUserByEmail(email)
+   console.log(user)
 
    if (!user) {
       throw new Error("Usuário não encontrado ou senha incorreta")
@@ -73,7 +74,7 @@ export const businessLogin = async (
    const passwordIsCorrect: boolean = await compare(password, user.password)
 
    if (!passwordIsCorrect) {
-      throw new Error("Usuário não encontrado ou senha incorreta")
+      throw new Error("Senha incorreta!")
    }
 
    const token: string = generateToken({
@@ -115,6 +116,10 @@ export const businessGetAll = async(
          if (!tokenData) {
             throw new Error("Token inválido!");
          }
+
+      if(tokenData.role !== USER_ROLES.ADMIN) {
+         throw new Error ('É necessário ser ADMIN para realizar esta ação!')
+      }
    
          await deleteUser(id)
      

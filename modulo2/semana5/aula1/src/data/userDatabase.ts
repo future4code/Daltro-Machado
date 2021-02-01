@@ -21,14 +21,8 @@ export const selectUserByEmail = async (
       const result = await connection("Camadas_User")
          .select("*")
          .where({ email })
-
-      return {
-         id: result[0].id,
-         name: result[0].name,
-         email: result[0].email,
-         password: result[0].password,
-         role: result[0].role
-      }
+      
+      return result[0]
 }
  
 export const selectAllUsers = async (): Promise<user> => {
