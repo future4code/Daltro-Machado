@@ -13,11 +13,9 @@ export type User = {
 }
 
 
-/* export type signupInputDTO = {
+export type signupInputDTO = {
    name: string,
-   nickname: string,
    email: string,
-   password: string,
-   role: string
-} */
+   password: string
+}
 

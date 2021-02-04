@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { businessLogin, businessSignup, businessGetProfile } from "../business/userBusiness";
 import { generateToken, getTokenData } from "../business/services/authenticator";
-import { User } from "../business/entities/user";
+import { signupInputDTO, User } from "../business/entities/user";
 import { compare } from "bcryptjs";
 import { generateId } from "../business/services/idGenerator";
 
@@ -65,28 +65,16 @@ export const signup = async (
    res: Response
 ) => {
     try {
-       let message = "Success!"
-       const { name, email, password } = req.body
- 
-       if (!name || !email || !password) {
-          res.statusCode = 406
-          message = '"name", "email" and "password" must be provided'
-          throw new Error(message)
-       }
- 
-       const id: string = generateId()
- 
-       const cypherPassword = await hash(password);
- 
-       await connection('labook_users')
-          .insert({
-             id,
-             name,
-             email,
-             password: cypherPassword
-          })
- 
-       const token: string = generateToken({ id })
+      let message = "Success!"
+      const input: signupInputDTO = 
+      {
+      name: req.body.name,
+      password: req.body.password,
+      email: req.body.email
+      }
+
+      const token = await businessSignup(input);
+
  
        res.status(201).send({ message, token })
  
