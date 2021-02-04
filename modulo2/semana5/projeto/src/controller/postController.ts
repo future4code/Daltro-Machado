@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { businessCreateTask, businessGetTaskById } from "../business/taskBusiness";
+import { businessCreatePost, businessGetPostById } from "../business/postBusiness";
 
 export const getPostById = async (
    req: Request,
@@ -10,24 +10,9 @@ export const getPostById = async (
 
       const { id } = req.params
 
-      const queryResult: any = await connection("labook_posts")
-         .select("*")
-         .where({ id })
+      const token: string = req.headers.authorization as string
 
-      if (!queryResult[0]) {
-         res.statusCode = 404
-         message = "Post not found"
-         throw new Error(message)
-      }
-
-      const post: Post = {
-         id: queryResult[0].id,
-         photo: queryResult[0].photo,
-         description: queryResult[0].description,
-         type: queryResult[0].type,
-         createdAt: queryResult[0].created_at,
-         authorId: queryResult[0].author_id,
-      }
+      const post = await businessGetPostById(id, token)
 
       res.status(200).send({ message, post })
 
@@ -44,25 +29,13 @@ export const createPost = async (
    res: Response
 ) => {
    try {
-      let message = "Success!"
-
+      
       const { photo, description, type } = req.body
 
       const token: string = req.headers.authorization as string
 
-      const tokenData: AuthenticationData = getTokenData(token)
-
-      const id: string = generateId()
-
-      await connection("labook_posts")
-         .insert({
-            id,
-            photo,
-            description,
-            type,
-            author_id: tokenData.id
-         })
-
+      let message = await businessCreatePost(photo, description, type, token)
+     
       res.status(201).send({ message })
 
    } catch (error) {

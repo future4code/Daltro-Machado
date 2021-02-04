@@ -1,12 +1,12 @@
 import { compare, hash } from "./services/hashManager";
-import { insertUser, selectUserByEmail, selectUserById } from "../data/userDatabase";
+import { insertUser, selectUserByEmail, } from "../data/userDatabase";
 import { generateToken } from "./services/authenticator";
 import { generateId } from "./services/idGenerator";
-import { user, signupInputDTO } from "./entities/user";
-import { selectTaskByUserId } from "../data/taskDatabase";
+import { User, signupInputDTO } from "./entities/user";
+/* import { selectTaskByUserId } from "../data/taskDatabase";
 import { setTasks, convertStringToUserRole } from "../data/model/userModel";
 
-
+ */
 export const businessSignup = async (
    input: signupInputDTO
  ) => {
@@ -14,6 +14,15 @@ export const businessSignup = async (
     if (!input.name || !input.email || !input.password) {
        throw new Error('"name", "email" and "password" must be provided')
     }
+
+    if (input.password.length < 6) {
+      throw new Error('password must be at leats 6 characters')
+  }
+
+  if (input.email.indexOf("@") === -1) {
+      throw new Error("Invalid Email");
+  }
+
  
     const id: string = generateId()
  
@@ -38,30 +47,29 @@ export const businessLogin = async (
    password: string
 ) => {
    if (!email || !password) {
-      throw new Error("'email' e 'senha' são obrigatórios")
+      throw new Error('"email" and "password" must be provided')
    }
-
-   const user: user = await selectUserByEmail(email)
+   
+   const user: User = await selectUserByEmail(email)
 
    if (!user) {
-      throw new Error("Usuário não encontrado ou senha incorreta")
+      throw new Error("Invalid credentials")
    }
 
    const passwordIsCorrect: boolean = await compare(password, user.password)
 
    if (!passwordIsCorrect) {
-      throw new Error("Usuário não encontrado ou senha incorreta")
+      throw new Error("Invalid credentials")
    }
 
    const token: string = generateToken({
       id: user.id,
-      role: user.role
    })
 
    return token
 }
 
-export const businessGetProfile = async(id: string)=>{
+/* export const businessGetProfile = async(id: string)=>{
 
    const user = await selectUserById(id);
    const userTasks = await selectTaskByUserId(id);
@@ -69,4 +77,13 @@ export const businessGetProfile = async(id: string)=>{
 
    return user;
 
-}
+} */
+
+
+
+
+
+
+
+
+

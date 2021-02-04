@@ -1,7 +1,7 @@
 import * as bcrypt from 'bcryptjs';
 
 
-const hash = async (
+export const hash = async (
   plainText: string
 ): Promise<string> => {
   const rounds = Number(process.env.BCRYPT_COST);
@@ -9,7 +9,7 @@ const hash = async (
   return bcrypt.hash(plainText, salt)
 }
 
-const compare = async (
+export const compare = async (
   plainText: string, cypherText: string
 ): Promise<boolean> => {
   return bcrypt.compare(plainText, cypherText)

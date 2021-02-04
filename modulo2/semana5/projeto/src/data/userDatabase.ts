@@ -1,10 +1,10 @@
 import { connection } from "./connection"
-import { user } from "../business/entities/user"
-import { convertUserRoleToString } from "./model/userModel"
+import { User } from "../business/entities/user"
+//import { convertUserRoleToString } from "./model/userModel"
 
 
 export const insertUser = async(
-   user: user
+   user: User
 ) => {
    await connection.insert({
       id: user.id,
@@ -16,19 +16,17 @@ export const insertUser = async(
 
 export const selectUserByEmail = async (
    email: string
-): Promise<user> => {
+): Promise<User> => {
    try {
-      const result = await connection("to_do_list_users")
+      const result = await connection("labook_users")
          .select("*")
          .where({ email })
 
       return {
          id: result[0].id,
          name: result[0].name,
-         nickname: result[0].nickname,
          email: result[0].email,
-         password: result[0].password,
-         role: result[0].role
+         password: result[0].password
       }
 
    } catch (error) {
@@ -36,7 +34,7 @@ export const selectUserByEmail = async (
    }
 }
 
-export const selectUserById = async (
+/* export const selectUserById = async (
    id: string
 ): Promise<user> => {
    try {
@@ -57,5 +55,5 @@ export const selectUserById = async (
       throw new Error(error.slqMessage || error.message)
    }
 }
-
+ */
 
