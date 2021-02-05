@@ -30,7 +30,7 @@ export const businessCreatePost = async (
       type !== POST_TYPES.EVENT &&
       type !== POST_TYPES.NORMAL
    ) {
-      throw new Error(`"type" must be "NORMAL" or "EVENT"`)
+      throw new Error(`"type" must be "normal" or "event"`)
    }
 
    const id: string = generateId()
@@ -68,7 +68,7 @@ export const businessGetPostById = async(
 
    const result = await selectPostById(id)
 
-   if (!result) {
+   if (result.length === 0) {
       throw new Error("Post not found")
    }
 
@@ -77,9 +77,10 @@ export const businessGetPostById = async(
       photo: result[0].photo,
       description: result[0].description,
       type: result[0].type,
-      created_at: result[0].created_at,
+      created_at: new Date(result[0].created_at).toLocaleDateString(),
       authorId: result[0].author_id,
    }
+  
 
    return post
 }

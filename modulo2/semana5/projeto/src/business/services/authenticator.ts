@@ -9,7 +9,7 @@ export const generateToken = (
       payload,
       process.env.JWT_KEY as string,
       {
-         expiresIn: process.env.JWT_EXPIRES_IN
+         expiresIn: process.env.JWT_EXPIRE_TIME
       }
    )
 }
@@ -21,6 +21,5 @@ export const getTokenData = (
       token,
       process.env.JWT_KEY as string
    )
-
    return { id: result.id, }
 }

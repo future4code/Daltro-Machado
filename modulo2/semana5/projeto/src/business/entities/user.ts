@@ -19,3 +19,7 @@ export type signupInputDTO = {
    password: string
 }
 
+export type Friendship = {
+   id_friend1: string,
+   id_friend2: string
+}

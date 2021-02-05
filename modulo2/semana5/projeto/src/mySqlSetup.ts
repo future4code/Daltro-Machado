@@ -1,4 +1,4 @@
-import {connection} from "./index"
+import {connection} from "./data/connection"
 
 async function createTables(){
    try {
@@ -20,6 +20,15 @@ async function createTables(){
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             author_id VARCHAR(255),
             FOREIGN KEY (author_id) REFERENCES labook_users (id)
+         )
+      `)
+
+      await connection.raw(`
+         CREATE TABLE labook_friendships(
+            id_friend1 VARCHAR(255) NOT NULL,
+            id_friend2 VARCHAR(255) NOT NULL,
+            FOREIGN KEY (id_friend1) REFERENCES labook_users (id),
+            FOREIGN KEY (id_friend2) REFERENCES labook_users (id)
          )
       `)
 

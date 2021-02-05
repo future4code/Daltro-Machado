@@ -9,7 +9,7 @@ export const selectPostById = async (
    const result: any = await connection("labook_posts")
    .select("*")
    .where({ id })
-
+   
    return result
 }
 

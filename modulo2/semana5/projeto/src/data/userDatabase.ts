@@ -1,7 +1,5 @@
 import { connection } from "./connection"
-import { User } from "../business/entities/user"
-//import { convertUserRoleToString } from "./model/userModel"
-
+import { Friendship, User } from "../business/entities/user"
 
 export const insertUser = async(
    user: User
@@ -16,44 +14,41 @@ export const insertUser = async(
 
 export const selectUserByEmail = async (
    email: string
-): Promise<User> => {
+): Promise<any> => {
    try {
       const result = await connection("labook_users")
          .select("*")
          .where({ email })
 
-      return {
-         id: result[0].id,
-         name: result[0].name,
-         email: result[0].email,
-         password: result[0].password
-      }
-
+      return result[0]
+   
    } catch (error) {
       throw new Error(error.slqMessage || error.message)
    }
 }
 
-/* export const selectUserById = async (
+export const insertFriendship = async(
+   friendship: Friendship
+) => {
+   await connection.insert({
+      id_friend1: friendship.id_friend1,
+      id_friend2: friendship.id_friend2
+   }).into('labook_friendships')
+}
+
+export const selectUserById = async (
    id: string
-): Promise<user> => {
+): Promise<any> => {
    try {
-      const result = await connection("to_do_list_users")
+      const result = await connection("labook_users")
          .select("*")
          .where({ id })
 
-      return {
-         id: result[0].id,
-         name: result[0].name,
-         nickname: result[0].nickname,
-         email: result[0].email,
-         password: result[0].password,
-         role: result[0].role
-      }
-
+      return result
+   
    } catch (error) {
       throw new Error(error.slqMessage || error.message)
    }
 }
- */
+
 
