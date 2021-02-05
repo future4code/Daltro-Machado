@@ -51,4 +51,28 @@ export const selectUserById = async (
    }
 }
 
+export const deleteFriendship = async(
+   id_friend1: string,
+   id_friend2: string
+) => {
+   await connection.raw(`
+   DELETE FROM labook_friendships
+   WHERE (id_friend1 = '${id_friend1}' || id_friend2 = '${id_friend1}') && (id_friend1 = '${id_friend2}' || id_friend2 = '${id_friend2}');
+`)
+}
 
+export const selectFriendshipByIds = async (
+   id_friend1: string, id_friend2: string
+): Promise<any> => {
+   try {
+     const result = await connection.raw(`
+      SELECT * FROM labook_friendships
+      WHERE (id_friend1 = '${id_friend1}' || id_friend2 = '${id_friend1}') && (id_friend1 = '${id_friend2}' || id_friend2 = '${id_friend2}');
+      `)
+
+      return result[0]
+   
+   } catch (error) {
+      throw new Error(error.slqMessage || error.message)
+   }
+}

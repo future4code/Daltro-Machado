@@ -1,5 +1,5 @@
 import { compare, hash } from "./services/hashManager";
-import { insertFriendship, insertUser, selectUserByEmail, selectUserById, } from "../data/userDatabase";
+import { deleteFriendship, insertFriendship, insertUser, selectFriendshipByIds, selectUserByEmail, selectUserById, } from "../data/userDatabase";
 import { generateToken, getTokenData } from "./services/authenticator";
 import { generateId } from "./services/idGenerator";
 import { User, signupInputDTO, AuthenticationData, Friendship } from "./entities/user";
@@ -98,7 +98,39 @@ export const businessDoFriendship = async(
 }
 
 
+export const businessUnDoFriendship = async(
+   id:string, token: string
+)=>{
 
+   const tokenData: AuthenticationData = getTokenData(token!)
+
+   if (!tokenData) {
+      throw new Error("Invalid token!");
+   }
+
+   const result = await selectUserById(id)
+
+   if (result.length === 0) {
+      throw new Error("User not found")
+   }
+
+   const id_friend1 = tokenData.id
+   const id_friend2 = id
+
+   const friends = await selectFriendshipByIds(id_friend1, id_friend2)
+   console.log(friends)
+   if (friends.length === 0) {
+      throw new Error("Friendship not found")
+   }
+
+   await deleteFriendship(
+      id_friend1,
+      id_friend2
+   )
+  
+
+   return "Success!"
+}
 
 
 /* export const businessGetProfile = async(id: string)=>{

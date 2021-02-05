@@ -1,5 +1,5 @@
-import { insertPost, selectPostById } from "../data/postDatabase"
-import { Post, POST_TYPES } from "./entities/posts"
+import { insertComment, insertPost, selectPostById } from "../data/postDatabase"
+import { Post, POST_TYPES, Comment } from "./entities/posts"
 import { AuthenticationData } from "./entities/user"
 import { getTokenData } from "./services/authenticator"
 import { getCreatedDate } from "./services/getCreatedDate"
@@ -55,6 +55,51 @@ export const businessCreatePost = async (
    return "Success!"
 
 }
+
+
+
+export const businessCreateComment = async (
+   id_post: string,
+   comment: string,
+   token: string
+) => {
+ 
+   const tokenData: AuthenticationData = getTokenData(token!)
+
+   if (!tokenData) {
+      throw new Error("Invalid token!");
+   }
+
+   if (
+      !id_post ||
+      !comment
+   ) {
+      throw new Error('"id_post" and "comment" must be informed')
+   }
+
+   const id: string = generateId()
+   
+   const created_at = getCreatedDate(1)
+
+   const author_id = tokenData.id
+
+   const newComment: Comment = {
+      id,
+      id_post,
+      comment,
+      author_id,
+      created_at
+   }
+
+   await insertComment(
+      newComment
+   )
+
+   return "Success!"
+
+}
+
+
 
 export const businessGetPostById = async(
    id:string, token: string

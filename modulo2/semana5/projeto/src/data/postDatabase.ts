@@ -1,7 +1,5 @@
 import { connection } from "./connection";
-/* import { task } from "../business/entities/task";
-import { toTaskModel } from "./model/taskModel"; */
-import { Post } from "../business/entities/posts";
+import { Post, Comment } from "../business/entities/posts";
 
 export const selectPostById = async (
    id: string
@@ -28,20 +26,15 @@ export const insertPost = async (
       })
 }
 
-/* 
-export const selectTaskByUserId = async (
-   id: string
-): Promise<task[]> => {
-
-   const result = await connection.raw(`
-        SELECT * FROM to_do_list_tasks
-        WHERE author_id = '${id}';
-    `)
-   const tasks: task[] = [];
-
-   for(let task of result[0]){
-      tasks.push(toTaskModel(task));
-   }
-    
-   return tasks;
-} */
+export const insertComment = async (
+   newComment: Comment
+) => {
+   await connection('labook_comments')
+      .insert({
+         id: newComment.id,
+         id_post: newComment.id_post,
+         comment: newComment.comment,
+         author_id: newComment.author_id,
+         created_at: newComment.created_at
+      })
+}

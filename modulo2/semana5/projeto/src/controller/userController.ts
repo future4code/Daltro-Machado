@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { businessDoFriendship, businessLogin, businessSignup } from "../business/userBusiness";
+import { businessDoFriendship, businessLogin, businessSignup, businessUnDoFriendship } from "../business/userBusiness";
 //import { generateToken, getTokenData } from "../business/services/authenticator";
 import { signupInputDTO, User } from "../business/entities/user";
 /* import { compare } from "bcryptjs";
@@ -74,7 +74,26 @@ export const signup = async (
     }
  }
  
+ export const unDoFriendship = async (
+   req: Request,
+   res: Response
+): Promise<void> => {
+    try {
+      const id = req.body.id
 
+      const token: string = req.headers.authorization as string
+
+      let message = await businessUnDoFriendship(id, token)
+ 
+       res.status(200).send({ message })
+ 
+    } catch (error) {
+       let message = error.sqlMessage || error.message
+       res.statusCode = 400
+ 
+       res.send({ message })
+    }
+ }
 /* export const getProfile = async(req: Request, res: Response)=>{
 
    const verifiedToken = getTokenData(req.headers.authorization as string);

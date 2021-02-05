@@ -32,6 +32,18 @@ async function createTables(){
          )
       `)
 
+      await connection.raw(`
+      CREATE TABLE labook_comments(
+         id VARCHAR(255) PRIMARY KEY,
+         id_post VARCHAR(255) NOT NULL,
+         comment TEXT NOT NULL,
+         author_id VARCHAR(255) NOT NULL,
+         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+         FOREIGN KEY (id_post) REFERENCES labook_posts (id),
+         FOREIGN KEY (id_author) REFERENCES labook_users (id)
+      )
+   `)
+
       console.log("MySql setup completed!")
    } catch (error) {
       console.log(error)
