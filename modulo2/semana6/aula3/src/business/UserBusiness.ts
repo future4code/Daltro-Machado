@@ -7,6 +7,7 @@ import tokenGenerator, { AuthenticationData, TokenGenerator } from "../services/
 
 export class UserBusiness {
    static getUserById: any;
+    static getAllUsers: any;
 
    public async signup(
       name: string,
