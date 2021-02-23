@@ -20,15 +20,18 @@ export default async function getRecipeById(
 
       const result = await selectRecipeById(req.params.id)
 
+
       if (!result) {
          throw new Error("Receita não encontrada")
       }
+
+      
 
       res.status(200).send({
          id: result.id,
          title: result.title,
          description: result.description,
-         create_date: result.create_date
+         create_date: new Date(result.create_date).toLocaleDateString()
       })
 
    } catch (error) {

@@ -10,7 +10,7 @@ export default async function login(
    try {
       const { email, password } = req.body
 
-      let message = "Usuário logado! Token de Acesso:"
+      let message = "Usuário logado!"
 
       if (!email || !password) {
          res.statusCode = 406
