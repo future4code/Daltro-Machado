@@ -1,0 +1,13 @@
+{
+   "name": "template-estrutura-de-dados",
+   "version": "1.0.0",
+   "main": "index.js",
+   "scripts": {
+      "array": "tsc && node ./build/Array.js",
+      "linked-list": "tsc && node ./build/LinkedList.js",
+      "stack": "tsc && node ./build/Stack.js",
+      "queue": "tsc && node ./build/Queue.js"
+   },
+   "author": "Labenu",
+   "license": "ISC"
+}
