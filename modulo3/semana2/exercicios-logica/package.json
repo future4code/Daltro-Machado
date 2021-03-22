@@ -1,0 +1,9 @@
+{
+   "name": "template-recursividade",
+   "version": "1.0.0",
+   "main": "index.js",
+   "scripts": {
+      "findMissingNumber": "tsc && node ./build/findMissingNumber.js"
+   },
+   "license": "ISC"
+}
